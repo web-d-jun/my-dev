@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" app clipped>
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.text" link>
+        <v-list-item v-for="item in items" :key="item.text" link @click="routerGo(item.routerPath)">
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
@@ -11,19 +11,6 @@
           </v-list-item-content>
         </v-list-item>
         <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
-        
-        <v-list-item class="mt-4" link>
-          <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
-          </v-list-item-action>
-          <v-list-item-title class="grey--text text--darken-1">Browse Channels</v-list-item-title>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-settings</v-icon>
-          </v-list-item-action>
-          <v-list-item-title class="grey--text text--darken-1">Manage Subscriptions</v-list-item-title>
-        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -33,31 +20,20 @@
       <v-toolbar-title class="mr-12 align-center">
         <span class="title">룰루랄라</span>
       </v-toolbar-title>
-      <v-spacer />
-      <v-row align="center" style="max-width: 650px">
-        <v-text-field
-          :append-icon-cb="() => {}"
-          placeholder="Search..."
-          single-line
-          append-icon="mdi-magnify"
-          color="white"
-          hide-details
-        />
-      </v-row>
     </v-app-bar>
 
     <v-content>
       <v-container class="fill-height">
-       <v-col>
-         
-       </v-col>
+        <v-col>
+          <router-view></router-view>
+        </v-col>
       </v-container>
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 
 @Component
 export default class App extends Vue {
@@ -65,12 +41,19 @@ export default class App extends Vue {
   theme: any = { dark: true };
   drawer: any = null;
   items: any = [
-    { icon: "mdi-anchor", text: "Most Popular" },
-    { icon: "mdi-account", text: "게시판" }
+    { icon: "mdi-home", text: "Home", routerPath: "/" },
+    { icon: "mdi-account", text: "게시판", routerPath: "/about" }
   ];
-  
+
   created() {
     this.$vuetify.theme.dark = true;
+  }
+
+  @Emit()
+  routerGo(routerPath: string) {
+    if (this.$route.path !== routerPath) {
+      this.$router.push({ path: `${routerPath}` });
+    }
   }
 }
 </script>
