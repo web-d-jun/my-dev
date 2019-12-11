@@ -10,7 +10,8 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Cho Jun Young</v-list-item-title>
-            <div>cjy874545@gmail.com</div>
+            <div class="profile__e-mail">- cjy874545@gmail.com</div>
+            <div class="profile__since-content">- since 2019</div>
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
@@ -18,7 +19,9 @@
           <template v-if="!path.group">
             <v-list-item link @click="routerGo(path.routerPath)">
               <v-list-item-action>
-                <v-icon>{{ path.icon }}</v-icon>
+                <v-list-item-avatar>
+                  <v-icon>{{ path.icon }}</v-icon>
+                </v-list-item-avatar>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>{{ path.text }}</v-list-item-title>
@@ -30,16 +33,21 @@
               <template #activator>
                 <v-list-item-action>
                   <v-list-item-avatar>
-                    <v-img src="./assets/vuejs.jpg"></v-img>
+                    <v-img :src="path.icon"></v-img>
                   </v-list-item-avatar>
                 </v-list-item-action>
                 <v-list-item-content>
                   <v-list-item-title>{{path.text}}</v-list-item-title>
                 </v-list-item-content>
               </template>
-              <v-list-item v-for="deepPath in path.deep_1" :key="deepPath.text">
+              <v-list-item
+                v-for="(deepPath, index) in path.deep_1"
+                :key="deepPath.text"
+                :index="index"
+                link
+              >
                 <v-list-item-content>
-                  <v-list-item-title>{{deepPath.text}}</v-list-item-title>
+                  <v-list-item-title>{{index+1}}.{{deepPath.text}}</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list-group>
@@ -92,3 +100,9 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.profile__since-content {
+  color: #676f84;
+}
+</style>
