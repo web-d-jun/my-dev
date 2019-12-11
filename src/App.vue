@@ -1,21 +1,57 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app clipped>
+    <v-navigation-drawer v-model="drawer" app clipped :mini-variant.sync="mini" permanent>
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.text" link @click="routerGo(item.routerPath)">
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+        <v-list-item>
+          <v-list-item-avatar>
+            <v-img src="./assets/me.jpeg"></v-img>
+          </v-list-item-avatar>
+        </v-list-item>
+        <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>{{ item.text }}</v-list-item-title>
+            <v-list-item-title>Cho Jun Young</v-list-item-title>
+            <div>cjy874545@gmail.com</div>
           </v-list-item-content>
         </v-list-item>
-        <v-subheader class="mt-4 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
+        <v-divider></v-divider>
+        <div v-for="path in urlPath" :key="path.text">
+          <template v-if="!path.group">
+            <v-list-item link @click="routerGo(path.routerPath)">
+              <v-list-item-action>
+                <v-icon>{{ path.icon }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ path.text }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          <template v-else-if="path.group">
+            <v-list-group no-action>
+              <template #activator>
+                <v-list-item-action>
+                  <v-list-item-avatar>
+                    <v-img src="./assets/vuejs.jpg"></v-img>
+                  </v-list-item-avatar>
+                </v-list-item-action>
+                <v-list-item-content>
+                  <v-list-item-title>{{path.text}}</v-list-item-title>
+                </v-list-item-content>
+              </template>
+              <v-list-item v-for="deepPath in path.deep_1" :key="deepPath.text">
+                <v-list-item-content>
+                  <v-list-item-title>{{deepPath.text}}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-group>
+          </template>
+        </div>
+
+        <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini">SUBSCRIPTIONS</v-subheader>
       </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left color="red" dense>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="mini = !mini" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
         <span class="title">룰루랄라</span>
@@ -34,16 +70,15 @@
 
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from "vue-property-decorator";
+import Path from "@/router/path";
 
 @Component
 export default class App extends Vue {
   @Prop() source: any;
   theme: any = { dark: true };
   drawer: any = null;
-  items: any = [
-    { icon: "mdi-home", text: "Home", routerPath: "/" },
-    { icon: "mdi-account", text: "게시판", routerPath: "/about" }
-  ];
+  mini: boolean = false;
+  urlPath: any = Path;
 
   created() {
     this.$vuetify.theme.dark = true;
