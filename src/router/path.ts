@@ -1,16 +1,11 @@
-import { vuejs, react } from '..//assets/index';
+import { vuejs, react } from '../assets/index';
 
 interface Path {
   icon: any,
   text: string,
   routerPath?: string,
   group?: boolean,
-  deep_1?: [
-    {
-      text: string,
-      routerPath?: string,
-    }
-  ]
+  deep_1?: object[]
 }
 
 const Path: Array<Path> = [
@@ -23,10 +18,11 @@ const Path: Array<Path> = [
     icon: vuejs,
     text: "Vue",
     group: true,
+    routerPath: "/vue",
     deep_1: [
       {
         text: 'TEST notice board',
-        routerPath: "/notice-board",
+        routerPath: "/vue/notice_board",
       }
     ]
   },

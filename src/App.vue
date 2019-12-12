@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="app">
     <v-navigation-drawer v-model="drawer" app clipped :mini-variant.sync="mini" permanent>
       <v-list dense>
         <v-list-item>
@@ -19,9 +19,7 @@
           <template v-if="!path.group">
             <v-list-item link @click="routerGo(path.routerPath)">
               <v-list-item-action>
-                <v-list-item-avatar>
-                  <v-icon>{{ path.icon }}</v-icon>
-                </v-list-item-avatar>
+                <v-icon>{{ path.icon }}</v-icon>
               </v-list-item-action>
               <v-list-item-content>
                 <v-list-item-title>{{ path.text }}</v-list-item-title>
@@ -29,7 +27,7 @@
             </v-list-item>
           </template>
           <template v-else-if="path.group">
-            <v-list-group no-action>
+            <v-list-group no-action link @click="routerGo(path.routerPath)">
               <template #activator>
                 <v-list-item-action>
                   <v-list-item-avatar>
@@ -40,11 +38,13 @@
                   <v-list-item-title>{{path.text}}</v-list-item-title>
                 </v-list-item-content>
               </template>
+
               <v-list-item
                 v-for="(deepPath, index) in path.deep_1"
                 :key="deepPath.text"
                 :index="index"
                 link
+                @click="routerGo(deepPath.routerPath)"
               >
                 <v-list-item-content>
                   <v-list-item-title>{{index+1}}.{{deepPath.text}}</v-list-item-title>
@@ -102,7 +102,20 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.profile__since-content {
-  color: #676f84;
+#app {
+  .profile__since-content {
+    color: #676f84;
+  }
+  .v-list-item__action {
+    width: 20px;
+    height: 20px;
+    .v-avatar {
+      &.v-list-item__avatar {
+        width: 20px !important;
+        height: 20px !important;
+        min-width: 20px !important;
+      }
+    }
+  }
 }
 </style>

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/views/Home.vue';
-// import About from '@/views/Home.vue';
 
 Vue.use(VueRouter);
 
@@ -12,13 +11,19 @@ const routes = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () => import('@/views/About.vue'),
+    path: '/vue',
+    name: 'vue_info',
+    component: () => import('@/views/vue_info.vue'),
+    children: [
+      {
+        path: 'notice_board',
+        component: () => import('@/views/notice_board.vue')
+      },
+    ]
   },
+
+
+
 ];
 
 const router = new VueRouter({
@@ -29,7 +34,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {
-    next()
+    next();
   }
 
 })
