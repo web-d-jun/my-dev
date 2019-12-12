@@ -18,11 +18,10 @@ const Path: Array<Path> = [
     icon: vuejs,
     text: "Vue",
     group: true,
-    routerPath: "/vue",
     deep_1: [
       {
-        text: 'TEST notice board',
-        routerPath: "/vue/notice_board",
+        text: 'Vue란 무엇인가?',
+        routerPath: "/vue/info",
       }
     ]
   },
@@ -36,6 +35,11 @@ const Path: Array<Path> = [
         routerPath: ''
       }
     ]
+  },
+  {
+    icon: "mdi-home",
+    text: "Notice Board",
+    routerPath: "/notice_board",
   }
 ]
 

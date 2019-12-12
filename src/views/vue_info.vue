@@ -1,9 +1,9 @@
 <template>
   <div class="vue-info__wrapper">
     <div class="vue-info" outlined>
+      
       <div class="d-flex flex-column">
-        <div v-for="i in 2000" :key="i">11</div>
-        <div>22</div>
+        <div v-for="i in 2000" :key="i">1</div>
       </div>
     </div>
   </div>
@@ -21,10 +21,8 @@ export default class VueInfo extends Vue {}
   max-width: 100%;
   position: relative;
   .vue-info {
-    max-width: 1024px;
+    max-width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.12);
-    margin-left: auto;
-    margin-right: auto;
   }
 }
 </style>

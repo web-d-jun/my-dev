@@ -33,7 +33,7 @@
             </v-list-item>
           </template>
           <template v-else-if="path.group">
-            <v-list-group no-action link @click="routerGo(path.routerPath)">
+            <v-list-group no-action>
               <template #activator>
                 <v-list-item-action>
                   <v-list-item-avatar>
@@ -64,7 +64,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left color="red" dense>
+    <v-app-bar app clipped-left elevate-on-scroll  dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
@@ -97,7 +97,6 @@ export default class App extends Vue {
   test: string = "clipped";
 
   created() {
-    this.$vuetify.theme.dark = true;
 
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
