@@ -1,6 +1,12 @@
 <template>
   <v-app id="app">
-    <v-navigation-drawer v-model="drawer" app clipped :mini-variant.sync="mini" permanent>
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      :clipped="is_device === 'desktop'"
+      :absolute="is_device === 'mobile'"
+      :temporary="is_device === 'mobile'"
+    >
       <v-list dense>
         <v-list-item>
           <v-list-item-avatar>
@@ -59,7 +65,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left color="red" dense>
-      <v-app-bar-nav-icon @click.stop="mini = !mini" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
         <span class="title">룰루랄라</span>
@@ -87,10 +93,25 @@ export default class App extends Vue {
   drawer: any = null;
   mini: boolean = false;
   urlPath: any = Path;
+  is_device: string = "";
+  test: string = "clipped";
 
   created() {
     this.$vuetify.theme.dark = true;
+
+    if (navigator.platform) {
+      const filter = "win16|win32|win64|macintel";
+      if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
+        this.is_device = "mobile";
+        this.drawer = false;
+      } else {
+        this.is_device = "desktop";
+        this.drawer = true;
+      }
+    }
   }
+
+  init() {}
 
   @Emit()
   routerGo(routerPath: string) {
