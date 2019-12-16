@@ -7,7 +7,7 @@
       :absolute="is_device === 'mobile'"
       :temporary="is_device === 'mobile'"
     >
-      <v-list dense>
+      <v-list navdense>
         <v-list-item>
           <v-list-item-avatar>
             <v-img src="./assets/me.jpeg"></v-img>
@@ -64,14 +64,13 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app clipped-left elevate-on-scroll  dense>
+    <v-app-bar app clipped-left elevate-on-scroll dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
         <span class="title">룰루랄라</span>
       </v-toolbar-title>
     </v-app-bar>
-
     <v-content>
       <v-container class="fill-height">
         <v-col>
@@ -97,7 +96,7 @@ export default class App extends Vue {
   test: string = "clipped";
 
   created() {
-
+    this.$vuetify.theme.dark = true;
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
       if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
