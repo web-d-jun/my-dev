@@ -4,6 +4,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import DataTable from "@/components/data-table/index.vue";
+import axios from "axios";
 
 @Component({
   components: {
@@ -29,7 +30,7 @@ export default class NoticeBoard extends Vue {
   ];
 
   created() {
-    this.$http
+    axios
       .get(
         "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
         {
