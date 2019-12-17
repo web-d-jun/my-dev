@@ -32,7 +32,7 @@ export default class NoticeBoard extends Vue {
   created() {
     axios
       .get(
-        "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
+        "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
         {
           params: {
             key: "c1c8d64f7a8fcd2a33707b7f84ada50e",
