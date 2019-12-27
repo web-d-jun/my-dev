@@ -5,10 +5,13 @@ import router from './router';
 import vuetify from './plugins/vuetify'
 import './registerServiceWorker'
 import Axios from 'axios';
+import * as moment from 'moment';
+
 
 Vue.config.productionTip = false
 Vue.config.devtools = true;
 Vue.prototype.$http = Axios;
+Vue.prototype.$moment = moment;
 
 
 
