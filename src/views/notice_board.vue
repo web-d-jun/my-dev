@@ -30,19 +30,22 @@ export default class NoticeBoard extends Vue {
   ];
 
   created() {
-    axios
+    (this as any).$http
       .get(
         "https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json",
         {
           params: {
             key: "c1c8d64f7a8fcd2a33707b7f84ada50e",
-            targetDt: "20191218"
+            targetDt: "20191227"
           }
         }
       )
       .then((response: any) => {
         console.log(response);
       });
+    let date = new Date();
+    date.setDate(date.getDate() - 1);
+    console.log(date)
     this.initialize();
   }
 

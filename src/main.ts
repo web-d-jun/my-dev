@@ -4,11 +4,11 @@ import store from './store';
 import router from './router';
 import vuetify from './plugins/vuetify'
 import './registerServiceWorker'
-// import Axios from 'axios';
+import Axios from 'axios';
 
 Vue.config.productionTip = false
 Vue.config.devtools = true;
-// Vue.prototype.$http = Axios;
+Vue.prototype.$http = Axios;
 
 
 
