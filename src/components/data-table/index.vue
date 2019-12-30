@@ -1,15 +1,17 @@
 <template>
   <div class="data-table">
-    <v-flex md12>
+    <v-flex md12 class="d-md-none">
       <v-row>
-        <v-col v-for="header in headers" :key="header.key">{{header.name}}</v-col>
+        <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>
       </v-row>
-      <v-row>
-        <v-col>1</v-col>
-        <v-col>1</v-col>
+      <v-row v-for="item in items" :key="item.rank">
+        <v-col
+          v-for="(i,index) in headers.length"
+          :key="i"
+          :class="[`text-${headers[index].column_align}`]"
+        >{{item[`${headers[index].column_name}`]}}</v-col>
       </v-row>
     </v-flex>
-    <div>{{items}}</div>
   </div>
 </template>
 <script lang="ts">
@@ -21,7 +23,9 @@ export default class DataTable extends Vue {
   readonly items: any;
   @Prop()
   readonly headers: any;
-  created() {}
+  created() {
+    console.log(this.headers);
+  }
 }
 </script>
 <style lang="scss" scoped>
