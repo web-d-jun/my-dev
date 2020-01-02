@@ -49,6 +49,17 @@ export default class DataTable extends Vue {
 .data-table {
   width: 100%;
   height: 100%;
+  .row {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #323232;
+    border-bottom: 1px solid #323232;
+    .col {
+        &--content {
+          background-color: #3b3b3b;
+        }
+      }
+  }
   .wrap {
     padding: 4px;
     .row {
