@@ -1,6 +1,5 @@
 
 <template>
-  
   <data-table :headers="headers" :items="items"></data-table>
 </template>
 <script lang="ts">
@@ -20,43 +19,49 @@ export default class NoticeBoard extends Vue {
       key: 0,
       name: "순위",
       align: "text-center",
-      column_name: 'rank',
-      column_align: 'center'
+      column_name: "rank",
+      column_align: "center",
+      width: '100px'
     },
     {
       key: 1,
       name: "영화명",
       align: "text-center",
-      column_name: 'movieNm',
-      column_align: 'start'
+      column_name: "movieNm",
+      column_align: "start",
+      width: '250px'
     },
     {
       key: 2,
       name: "개봉일",
       align: "text-center",
-      column_name: 'openDt',
-      column_align: 'center'
+      column_name: "openDt",
+      column_align: "center",
+      width: '150px'
     },
     {
       key: 3,
       name: "매출액",
       align: "text-end",
-      column_name: 'salesAmt',
-      column_align: 'end'
+      column_name: "salesAmt",
+      column_align: "end",
+      width: '200px'
     },
     {
       key: 4,
       name: "관객수",
       align: "text-end",
-      column_name: 'audiCnt',
-      column_align: 'end'
+      column_name: "audiCnt",
+      column_align: "end",
+      width: '200px'
     },
     {
       key: 5,
       name: "평점",
       align: "text-center",
-      column_name: 'audit',
-      column_align: 'center'
+      column_name: "audit",
+      column_align: "center",
+      width: '130px'
     }
   ];
 
@@ -85,13 +90,13 @@ export default class NoticeBoard extends Vue {
 
       this.items = movieApi.data.boxOfficeResult.dailyBoxOfficeList.map(
         (data: any, index: number) => {
-          
           return {
             rank: data.rank,
             movieNm: data.movieNm,
             openDt: data.openDt,
             salesAmt: data.salesAmt,
-            audiCnt: data.audiCnt
+            audiCnt: data.audiCnt,
+            audit: "★★★★☆"
           };
         }
       );

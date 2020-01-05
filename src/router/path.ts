@@ -20,7 +20,7 @@ const Path: Array<Path> = [
     group: true,
     deep_1: [
       {
-        text: '영화순위',
+        text: 'Dashboard',
         routerPath: "/vue/notice_board",
       }
     ]

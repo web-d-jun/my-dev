@@ -1,17 +1,20 @@
 <template>
   <div class="data-table">
-    <v-flex md12 class="d-none d-sm-block">
-      <v-row>
-        <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>
-      </v-row>
-      <v-row v-for="item in items" :key="item.rank">
-        <v-col
-          v-for="(i,index) in headers.length"
-          :key="i"
-          :class="[`text-${headers[index].column_align}`]"
-        >{{item[`${headers[index].column_name}`]}}</v-col>
-      </v-row>
-    </v-flex>
+    <v-card class="d-none d-sm-block">
+      <v-flex md12>
+        <v-row>
+          <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>
+        </v-row>
+        <v-row v-for="item in items" :key="item.rank">
+          <v-col
+            v-for="(i,index) in headers.length"
+            :key="i"
+            :class="[`text-${headers[index].column_align}`]"
+            :style="{width: `${headers[index].width}`}"
+          >{{item[`${headers[index].column_name}`]}}</v-col>
+        </v-row>
+      </v-flex>
+    </v-card>
     <div class="d-sm-flex d-md-none wrap" v-for="(item) in items" :key="item.key">
       <v-card>
         <v-img
@@ -55,10 +58,10 @@ export default class DataTable extends Vue {
     border-top: 1px solid #323232;
     border-bottom: 1px solid #323232;
     .col {
-        &--content {
-          background-color: #3b3b3b;
-        }
+      &--content {
+        background-color: #3b3b3b;
       }
+    }
   }
   .wrap {
     padding: 4px;
