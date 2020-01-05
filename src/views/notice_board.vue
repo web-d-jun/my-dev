@@ -67,6 +67,8 @@ export default class NoticeBoard extends Vue {
 
   created() {
     this.initialize();
+    const test = (this as any).$Numberformat('111');
+    console.log(test)
   }
 
   initialize() {
@@ -94,8 +96,8 @@ export default class NoticeBoard extends Vue {
             rank: data.rank,
             movieNm: data.movieNm,
             openDt: data.openDt,
-            salesAmt: data.salesAmt,
-            audiCnt: data.audiCnt,
+            salesAmt: (this as any).$Numberformat(data.salesAmt),
+            audiCnt: (this as any).$Numberformat(data.audiCnt),
             audit: "★★★★☆"
           };
         }

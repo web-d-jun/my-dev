@@ -44,7 +44,7 @@ export default class DataTable extends Vue {
   @Prop()
   readonly headers: any;
   created() {
-    console.log(this.headers);
+    
   }
 }
 </script>
