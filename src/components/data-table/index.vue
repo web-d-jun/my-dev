@@ -18,9 +18,10 @@
     <div class="d-sm-flex d-md-none wrap" v-for="(item) in items" :key="item.key">
       <v-card>
         <v-img
+          v-show="item.imgShow"
           class="white--text align-end"
           height="200px"
-          src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          :src="item.imgUrl"
         ></v-img>
         <v-flex v-for="header in headers" :key="header.key">
           <v-row>
@@ -43,9 +44,7 @@ export default class DataTable extends Vue {
   readonly items: any;
   @Prop()
   readonly headers: any;
-  created() {
-    
-  }
+  created() {}
 }
 </script>
 <style lang="scss" scoped>

@@ -1,18 +1,23 @@
-import { vuejs, react } from '../assets/index';
+import { vuejs, react } from "../assets/index";
 
 interface Path {
-  icon: any,
-  text: string,
-  routerPath?: string,
-  group?: boolean,
-  deep_1?: object[]
+  icon: any;
+  text: string;
+  routerPath?: string;
+  group?: boolean;
+  deep_1?: object[];
 }
 
 const Path: Array<Path> = [
   {
     icon: "mdi-home",
     text: "Home",
-    routerPath: "/",
+    routerPath: "/"
+  },
+  {
+    icon: "mdi-desktop-mac-dashboard",
+    text: "Dashboard",
+    routerPath: "/dashboard"
   },
   {
     icon: vuejs,
@@ -20,8 +25,8 @@ const Path: Array<Path> = [
     group: true,
     deep_1: [
       {
-        text: 'Dashboard',
-        routerPath: "/vue/notice_board",
+        text: "",
+        routerPath: ""
       }
     ]
   },
@@ -31,11 +36,11 @@ const Path: Array<Path> = [
     group: true,
     deep_1: [
       {
-        text: '',
-        routerPath: ''
+        text: "",
+        routerPath: ""
       }
     ]
   }
-]
+];
 
 export default Path;

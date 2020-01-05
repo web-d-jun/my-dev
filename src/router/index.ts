@@ -11,6 +11,11 @@ const routes = [
     component: Home,
   },
   {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: () => import('@/views/notice_board.vue')
+  },
+  {
     path: '/vue/notice_board',
     name: 'notice_board',
     component: () => import('@/views/notice_board.vue'),

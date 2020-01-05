@@ -1,6 +1,17 @@
 
 <template>
-  <data-table :headers="headers" :items="items"></data-table>
+  <v-flex>
+    <v-row>
+      <v-flex>111</v-flex>
+      <v-flex>111</v-flex>
+      <v-flex>111</v-flex>
+    </v-row>
+    <v-row>
+      <v-flex>
+        <data-table :headers="headers" :items="items"></data-table>
+      </v-flex>
+    </v-row>
+  </v-flex>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
@@ -21,7 +32,7 @@ export default class NoticeBoard extends Vue {
       align: "text-center",
       column_name: "rank",
       column_align: "center",
-      width: '100px'
+      width: "100px"
     },
     {
       key: 1,
@@ -29,7 +40,7 @@ export default class NoticeBoard extends Vue {
       align: "text-center",
       column_name: "movieNm",
       column_align: "start",
-      width: '250px'
+      width: "250px"
     },
     {
       key: 2,
@@ -37,7 +48,7 @@ export default class NoticeBoard extends Vue {
       align: "text-center",
       column_name: "openDt",
       column_align: "center",
-      width: '150px'
+      width: "150px"
     },
     {
       key: 3,
@@ -45,7 +56,7 @@ export default class NoticeBoard extends Vue {
       align: "text-end",
       column_name: "salesAmt",
       column_align: "end",
-      width: '200px'
+      width: "200px"
     },
     {
       key: 4,
@@ -53,7 +64,7 @@ export default class NoticeBoard extends Vue {
       align: "text-end",
       column_name: "audiCnt",
       column_align: "end",
-      width: '200px'
+      width: "200px"
     },
     {
       key: 5,
@@ -61,14 +72,12 @@ export default class NoticeBoard extends Vue {
       align: "text-center",
       column_name: "audit",
       column_align: "center",
-      width: '130px'
+      width: "130px"
     }
   ];
 
   created() {
     this.initialize();
-    const test = (this as any).$Numberformat('111');
-    console.log(test)
   }
 
   initialize() {
@@ -98,7 +107,9 @@ export default class NoticeBoard extends Vue {
             openDt: data.openDt,
             salesAmt: (this as any).$Numberformat(data.salesAmt),
             audiCnt: (this as any).$Numberformat(data.audiCnt),
-            audit: "★★★★☆"
+            audit: "★★★★☆",
+            imgShow: true,
+            imgUrl: "https://cdn.vuetifyjs.com/images/cards/docks.jpg"
           };
         }
       );
