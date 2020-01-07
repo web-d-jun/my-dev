@@ -68,7 +68,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">룰루랄라</span>
+        <span class="title">○○○○○○○○</span>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>

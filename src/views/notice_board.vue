@@ -1,17 +1,28 @@
 
 <template>
-  <v-flex>
-    <v-row>
-      <v-flex>111</v-flex>
-      <v-flex>111</v-flex>
-      <v-flex>111</v-flex>
-    </v-row>
-    <v-row>
-      <v-flex>
-        <data-table :headers="headers" :items="items"></data-table>
-      </v-flex>
-    </v-row>
-  </v-flex>
+  <div class="dashboard-container">
+    <v-flex>
+      <v-row>
+        <v-flex md4 sm12 xs12 class="box">
+          <v-card>1</v-card>
+        </v-flex>
+        <v-flex md4 sm12 xs12 class="box">
+          <v-card>2</v-card>
+        </v-flex>
+        <v-flex md4 sm12 xs12 class="box">
+          <v-card>3</v-card>
+        </v-flex>
+        <v-flex md4 sm12 xs12 class="box">
+          <v-card>3</v-card>
+        </v-flex>
+      </v-row>
+      <v-row>
+        <v-flex>
+          <data-table :headers="headers" :items="items"></data-table>
+        </v-flex>
+      </v-row>
+    </v-flex>
+  </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
@@ -119,3 +130,10 @@ export default class NoticeBoard extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scope>
+.dashboard-container {
+  width: 100%;
+  height: 100%;
+}
+</style>
