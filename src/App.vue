@@ -68,7 +68,7 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
       <v-toolbar-title class="mr-12 align-center">
-        <span class="title">○○○○○○○○</span>
+        <span class="title">J</span>
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
@@ -85,7 +85,12 @@
 import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import Path from "@/router/path";
 
-@Component
+
+@Component({
+  components: {
+    
+  }
+})
 export default class App extends Vue {
   @Prop() source: any;
   theme: any = { dark: true };
