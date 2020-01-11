@@ -1,12 +1,13 @@
 <template>
   <div class="is-loading-container" v-if="displayShow">
-    <div class="is-loading">
-      <img class="image" :src="Logo" alt="logo" width="60px" height="70px" />
-      <div class="wave-wrap" :style="{height: progressBarValue + '%'}">
-        <div class="wave"></div>
-        <div class="wave2"></div>
+    <div class="is-loading-wrap">
+      <div class="is-loading">
+        <img class="image" :src="Logo" alt="logo" width="60px" height="70px" />
+        <div class="wave-wrap" :style="{height: progressBarValue + '%'}">
+          <div class="wave"></div>
+          <div class="wave2"></div>
+        </div>
       </div>
-      <div class="inner-text">{{progressBarValue}} %</div>
     </div>
   </div>
 </template>
@@ -28,17 +29,17 @@ export default class isLoader extends Vue {
     setInterval((): void => {
       if (this.progressBarValue >= 100) {
         this.progressBarValue = 0;
-        this.displayShow = false;
+        // this.displayShow = false;
       }
       this.progressBarValue++;
-    }, 20);
+    }, 50);
   }
 }
 </script>
 <style lang="scss" scope>
 .is-loading-container {
   width: 100%;
-  height: 100%;
+  height: 800px;
   position: absolute;
   left: 0;
   top: 0;
@@ -47,57 +48,59 @@ export default class isLoader extends Vue {
   align-items: center;
   justify-content: center;
   z-index: 1;
-  .is-loading {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
+  background: #303030;
+  .is-loading-wrap {
+    width: 215px;
+    height: 215px;
     border: 1px solid;
-    text-align: center;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
-    overflow: hidden;
-    .image {
-      z-index: 1;
-    }
-    .wave-wrap {
-      position: absolute;
-      background: transparent;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      border: 0;
-      .wave {
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        margin-left: -80px;
-        background: #0af;
-        border-radius: 42%;
-        animation: drift 2000ms infinite linear;
-        opacity: 0.4;
-        transform-origin: 50% 48%;
-      }
-      .wave2 {
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        margin-left: -80px;
-        border-radius: 42%;
-        animation: drift 3500ms infinite linear;
-        opacity: 0.4;
-        background: #0af;
-        transform-origin: 50% 48%;
-      }
-    }
+    align-items: center;
 
-    .inner-text {
-      position: absolute;
+    .is-loading {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      text-align: center;
       display: flex;
-      width: 100%;
-      height: 100%;
       justify-content: center;
-      align-items: center;
+      overflow: hidden;
+      .image {
+        z-index: 1;
+      }
+      .wave-wrap {
+        position: absolute;
+        background: transparent;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        border: 0;
+        .wave {
+          position: absolute;
+          width: 400px;
+          height: 400px;
+          margin-left: -80px;
+          background: #0af;
+          border-radius: 42%;
+          animation: drift 2000ms infinite linear;
+          opacity: 0.4;
+          transform-origin: 50% 48%;
+        }
+        .wave2 {
+          position: absolute;
+          width: 400px;
+          height: 400px;
+          margin-left: -80px;
+          border-radius: 42%;
+          animation: drift 3500ms infinite linear;
+          opacity: 0.4;
+          background: #0af;
+          transform-origin: 50% 48%;
+        }
+      }
     }
   }
 }
