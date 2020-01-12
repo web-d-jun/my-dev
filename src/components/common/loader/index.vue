@@ -8,6 +8,7 @@
           <div class="wave2"></div>
         </div>
       </div>
+      <div class="outline"></div>
     </div>
   </div>
 </template>
@@ -50,13 +51,16 @@ export default class isLoader extends Vue {
   z-index: 1;
   background: #303030;
   .is-loading-wrap {
+    position: relative;
     width: 215px;
     height: 215px;
-    border: 1px solid;
+    border-top: 1px solid;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 1rem #08f,
+      inset 0 0 1rem #08f, 0 0 2rem #08f, inset 0 0 2rem #08f;
 
     .is-loading {
       position: relative;
@@ -102,6 +106,29 @@ export default class isLoader extends Vue {
         }
       }
     }
+    .outline {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-top: 5px solid #fff;
+      border-radius: 50%;
+      animation: spin 3000ms infinite linear;
+      // &::before,
+      // &::after {
+      //   content: " ";
+      //   display: block;
+      // }
+      // &::before {
+      //   position: absolute;
+      //   left: 0;
+      //   top: 0;
+      //   width: 10px;
+      //   height: 5px;
+      //   border-radius: 50%;
+      //   box-shadow: 0 0 0.5rem #fff, inset 0 0 0.5rem #fff, 0 0 1rem rgb(255, 230, 0),
+      //     inset 0 0 1rem rgb(255, 230, 0), 0 0 2rem #08f, inset 0 0 2rem rgb(255, 230, 0);
+      // }
+    }
   }
 }
 @keyframes drift {
@@ -109,6 +136,17 @@ export default class isLoader extends Vue {
     transform: rotate(0deg);
   }
   from {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
