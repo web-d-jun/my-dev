@@ -72,6 +72,7 @@
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
+      <is-loader></is-loader>
       <v-container class="fill-height">
         <v-col>
           <router-view></router-view>
@@ -84,11 +85,11 @@
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import Path from "@/router/path";
-
+import isLoader from "@/components/common/loader/index.vue";
 
 @Component({
   components: {
-    
+    isLoader
   }
 })
 export default class App extends Vue {
