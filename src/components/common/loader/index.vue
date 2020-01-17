@@ -15,25 +15,36 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import { logo } from "@/assets/index";
+import { State, Mutation, namespace } from "vuex-class";
 
 @Component
 export default class isLoader extends Vue {
   Logo: any = logo;
   progressBarValue: number = 1;
-  displayShow: boolean = true;
 
+  @State("loaderDisplay", { namespace: "loaderModule" })
+  loaderDisplay!: boolean;
+
+  @Mutation("loaderDisplayShow", { namespace: "loaderModule" })
+  loaderDisplayShow!: any;
   created() {
     this.progressBar();
   }
 
+  get displayShow() {
+    return this.loaderDisplay;
+  }
+
   progressBar() {
-    setInterval((): void => {
-      if (this.progressBarValue >= 100) {
-        this.progressBarValue = 0;
-        // this.displayShow = false;
-      }
-      this.progressBarValue++;
-    }, 50);
+    console.log(this.loaderDisplay);
+    if (this.loaderDisplay) {
+      setInterval((): void => {
+        if (this.progressBarValue >= 100) {
+          this.progressBarValue = 0;
+        }
+        this.progressBarValue++;
+      }, 50);
+    }
   }
 }
 </script>
