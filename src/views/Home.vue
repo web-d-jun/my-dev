@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <is-loader></is-loader>
     <div>Home</div>
   </div>
 </template>
@@ -9,12 +8,28 @@
 // @ is an alias to /src
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
-import isLoader from "@/components/common/loader/index.vue";
+import { Mutation, namespace } from "vuex-class";
 
-@Component({
-  components: {
-    isLoader
+@Component({})
+export default class home extends Vue {
+  @Mutation("loaderInit", { namespace: "loaderModule" })
+  loaderInit!: any;
+  @Mutation("loaderDisplayShow", { namespace: "loaderModule" })
+  loaderDisplayShow!: any;
+
+  created() {
+    this.loaderInit();
+    this.getData();
   }
-})
-export default class home extends Vue {}
+
+  async getData() {
+    try {
+      setTimeout(() => {
+        this.loaderDisplayShow();
+      }, 5000);
+    } catch (e) {
+      console.error(e.message);
+    }
+  }
+}
 </script>
