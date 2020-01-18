@@ -72,7 +72,7 @@
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
-      <is-loader></is-loader>
+      
       <v-container class="fill-height">
         <v-col>
           <router-view></router-view>

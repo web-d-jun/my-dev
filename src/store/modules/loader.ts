@@ -1,9 +1,11 @@
 interface State {
   loaderDisplay: boolean;
+  loaderProgressInit: boolean;
 }
 
 const state: State = {
-  loaderDisplay: true
+  loaderDisplay: true,
+  loaderProgressInit: false
 };
 
 const mutations: any = {
@@ -12,11 +14,18 @@ const mutations: any = {
   },
   loaderInit(state: any) {
     state.loaderDisplay = true;
+    state.loaderProgressInit = true;
   }
 };
+
+
+const actions: any = {
+
+}
 
 export default {
   namespaced: true,
   state,
-  mutations
+  mutations,
+  actions
 };

@@ -21,12 +21,14 @@ import { State, Mutation, namespace } from "vuex-class";
 export default class isLoader extends Vue {
   Logo: any = logo;
   progressBarValue: number = 1;
+  test: any;
 
   @State("loaderDisplay", { namespace: "loaderModule" })
   loaderDisplay!: boolean;
 
-  @Mutation("loaderDisplayShow", { namespace: "loaderModule" })
-  loaderDisplayShow!: any;
+  @State("loaderProgressInit", { namespace: "loaderModule" })
+  loaderProgressInit!: boolean;
+
   created() {
     this.progressBar();
   }
@@ -36,22 +38,20 @@ export default class isLoader extends Vue {
   }
 
   progressBar() {
-    console.log(this.loaderDisplay);
-    if (this.loaderDisplay) {
       setInterval((): void => {
         if (this.progressBarValue >= 100) {
           this.progressBarValue = 0;
+          console.log("??")
         }
         this.progressBarValue++;
-      }, 50);
-    }
+      }, 30);
   }
 }
 </script>
 <style lang="scss" scope>
 .is-loading-container {
   width: 100%;
-  height: 800px;
+  height: 500px;
   position: absolute;
   left: 0;
   top: 0;

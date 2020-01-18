@@ -1,5 +1,6 @@
 <template>
   <div class="dashboard-container">
+    <is-loader></is-loader>
     <v-flex>
       <v-row>
         <v-flex md4 sm12 xs12 class="box">
@@ -26,11 +27,13 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import DataTable from "@/components/data-table/index.vue";
+import isLoader from "@/components/common/loader/index.vue";
 import { Mutation, namespace } from "vuex-class";
 
 @Component({
   components: {
-    DataTable
+    DataTable,
+    isLoader
   }
 })
 export default class NoticeBoard extends Vue {
