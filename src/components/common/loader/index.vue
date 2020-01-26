@@ -41,7 +41,6 @@ export default class isLoader extends Vue {
       setInterval((): void => {
         if (this.progressBarValue >= 100) {
           this.progressBarValue = 0;
-          console.log("??")
         }
         this.progressBarValue++;
       }, 30);
@@ -51,16 +50,15 @@ export default class isLoader extends Vue {
 <style lang="scss" scope>
 .is-loading-container {
   width: 100%;
-  height: 500px;
+  height: 600px;
   position: absolute;
   left: 0;
   top: 0;
-  background: #303030;
+  background-image: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
-  background: #303030;
   .is-loading-wrap {
     position: relative;
     width: 215px;

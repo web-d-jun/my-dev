@@ -1,5 +1,9 @@
 <template>
   <v-app id="app">
+    <!-- <div class="moon-wrap">
+      <div class="moon1"></div>
+      <div class="moon2"></div>
+    </div> -->
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -72,7 +76,6 @@
       </v-toolbar-title>
     </v-app-bar>
     <v-content>
-      
       <v-container class="fill-height">
         <v-col>
           <router-view></router-view>
@@ -102,7 +105,7 @@ export default class App extends Vue {
   test: string = "clipped";
 
   created() {
-    this.$vuetify.theme.dark = true;
+    // this.$vuetify.theme.dark = true;
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
       if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
@@ -128,8 +131,33 @@ export default class App extends Vue {
 
 <style lang="scss" scoped>
 #app {
+  background-image: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%);
+  position: relative;
+  .moon-wrap {
+    position: absolute;
+    width: 100px;
+    height: 500px;
+    left: 50%;
+    top: 10%;
+    border: 1px solid blue;
+    transform: translate(-50%, 0%);
+    .moon1 {
+      position: absolute;
+      width: 150px;
+      height: 250px;
+      border: 1px solid red;
+      bottom: 0;
+      left: 20%;
+    }
+  }
   .profile__since-content {
     color: #676f84;
+  }
+  .v-navigation-drawer {
+    background: transparent;
+  }
+  .v-toolbar {
+    background: #fdcff6;
   }
   .v-list-item__action {
     width: 20px;
@@ -141,6 +169,12 @@ export default class App extends Vue {
         min-width: 20px !important;
       }
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .v-navigation-drawer {
+    background: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%) !important;
   }
 }
 </style>

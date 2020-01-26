@@ -18,7 +18,9 @@
       </v-row>
       <v-row>
         <v-flex>
-          <data-table :headers="headers" :items="items"></data-table>
+          <custom-wrap>
+            <data-table :headers="headers" :items="items"></data-table>
+          </custom-wrap>
         </v-flex>
       </v-row>
     </v-flex>
@@ -28,12 +30,14 @@
 import { Component, Vue, Watch } from "vue-property-decorator";
 import DataTable from "@/components/data-table/index.vue";
 import isLoader from "@/components/common/loader/index.vue";
+import CustomWrap from "@/components/common/custom-wrap/index.vue";
 import { Mutation, namespace } from "vuex-class";
 
 @Component({
   components: {
     DataTable,
-    isLoader
+    isLoader,
+    CustomWrap
   }
 })
 export default class NoticeBoard extends Vue {
