@@ -191,7 +191,7 @@ export default class App extends Vue {
           position: absolute;
           width: 170px;
           height: 170px;
-          background: linear-gradient(#dcb7dc 40%, #acb7dc 80%);
+          background: linear-gradient(#dcb7dc 70%, #acb7dc 100%);
           border-radius: 50%;
           box-shadow: 20px 0 0 0 rgb(216, 216, 216);
         }
