@@ -4,16 +4,24 @@
     <v-flex>
       <v-row>
         <v-flex md4 sm12 xs12 class="box">
-          <v-card>1</v-card>
+          <custom-wrap>
+            <v-card>1</v-card>
+          </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
-          <v-card>2</v-card>
+          <custom-wrap>
+            <v-card>2</v-card>
+          </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
-          <v-card>3</v-card>
+          <custom-wrap>
+            <v-card>3</v-card>
+          </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
-          <v-card>3</v-card>
+          <custom-wrap>
+            <v-card>3</v-card>
+          </custom-wrap>
         </v-flex>
       </v-row>
       <v-row>

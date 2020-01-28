@@ -1,6 +1,6 @@
 <template>
   <div class="data-table">
-    <v-card class="d-none d-sm-block">
+    <v-card class="d-none d-sm-block transparent">
       <v-flex md12>
         <v-row>
           <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>
@@ -16,7 +16,7 @@
       </v-flex>
     </v-card>
     <div class="d-sm-flex d-md-none wrap" v-for="(item) in items" :key="item.key">
-      <v-card>
+      <v-card class="transparent">
         <v-img
           v-show="item.imgShow"
           class="white--text align-end"
@@ -71,7 +71,7 @@ export default class DataTable extends Vue {
       border-bottom: 1px solid #323232;
       .col {
         &--content {
-          background-color: #3b3b3b;
+          background-color: #EEEEEE;
         }
       }
     }
