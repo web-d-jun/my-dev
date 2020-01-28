@@ -1,9 +1,18 @@
 <template>
   <v-app id="app">
-    <!-- <div class="moon-wrap">
-      <div class="moon1"></div>
-      <div class="moon2"></div>
-    </div> -->
+    <div class="moon-wrap mini">
+      <div class="moon1-wrap">
+        <div class="moon1">
+          <div class="outline"></div>
+        </div>
+      </div>
+      <div class="moon2-wrap">
+        <div class="moon2">
+          <div class="outline"></div>
+          <div class="moon2-half"></div>
+        </div>
+      </div>
+    </div>
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -131,23 +140,70 @@ export default class App extends Vue {
 
 <style lang="scss" scoped>
 #app {
-  background-image: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%);
+  background-image: linear-gradient(to top, #acb7dc 70%, #dcb7dc 80%);
   position: relative;
   .moon-wrap {
     position: absolute;
-    width: 100px;
+    width: 500px;
     height: 500px;
     left: 50%;
     top: 10%;
-    border: 1px solid blue;
     transform: translate(-50%, 0%);
-    .moon1 {
+    .moon1-wrap {
       position: absolute;
-      width: 150px;
+      width: 250px;
       height: 250px;
-      border: 1px solid red;
       bottom: 0;
       left: 20%;
+      .moon1 {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #f1f1f1;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        animation: light 2000ms infinite;
+        .outline {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          border-top: 3px solid #dcb7dc;
+          animation: spin 3000ms infinite linear;
+        }
+      }
+    }
+    .moon2-wrap {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      top: 0;
+      right: 10%;
+      .moon2 {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #f1f1f1;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        animation: light 2000ms infinite;
+        .moon2-half {
+          position: absolute;
+          width: 170px;
+          height: 170px;
+          background: linear-gradient(#dcb7dc 40%, #acb7dc 80%);
+          border-radius: 50%;
+          box-shadow: 20px 0 0 0 rgb(216, 216, 216);
+        }
+        .outline {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          border-top: 3px solid #dcb7dc;
+          animation: spin 6000ms infinite linear;
+        }
+      }
     }
   }
   .profile__since-content {
@@ -157,7 +213,7 @@ export default class App extends Vue {
     background: transparent;
   }
   .v-toolbar {
-    background: #fdcff6;
+    background: #dcb7dc;
   }
   .v-list-item__action {
     width: 20px;
@@ -174,7 +230,42 @@ export default class App extends Vue {
 
 @media screen and (max-width: 768px) {
   .v-navigation-drawer {
-    background: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%) !important;
+    background-image: linear-gradient(
+      to top,
+      #acb7dc 70%,
+      #dcb7dc 80%
+    ) !important;
+  }
+  .mini {
+    width: 300px !important;
+    
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes light {
+  0% {
+    box-shadow: 1px 1px 1px 0.2rem rgba(255, 255, 255, 0.1),
+      0 0 0 0.5rem rgba(255, 255, 255, 0.1), 0 0 0 1rem rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 1px 1px 1px 0.2rem rgba(255, 255, 255),
+      0 0 0 0.5rem rgba(255, 255, 255, 0.1), 0 0 0 1rem rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 1px 1px 1px 0.2rem rgba(255, 255, 255, 0.1),
+      0 0 0 0.5rem rgba(255, 255, 255, 0.1), 0 0 0 1rem rgba(255, 255, 255, 0.1);
   }
 }
 </style>

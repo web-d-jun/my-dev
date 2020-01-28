@@ -54,7 +54,7 @@ export default class isLoader extends Vue {
   position: absolute;
   left: 0;
   top: 0;
-  background-image: linear-gradient(to top, #ace0f9 50%, #fdcff6 100%);
+  background-image: linear-gradient(to top , #acb7dc 70%, #dcb7dc 80%);
   display: flex;
   align-items: center;
   justify-content: center;
