@@ -47,7 +47,7 @@ export default class isLoader extends Vue {
   }
 }
 </script>
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .is-loading-container {
   width: 100%;
   height: 600px;

@@ -27,6 +27,7 @@
       <v-row>
         <v-flex>
           <custom-wrap>
+            <j-title :title="'영화'"></j-title>
             <data-table :headers="headers" :items="items"></data-table>
           </custom-wrap>
         </v-flex>
@@ -40,12 +41,14 @@ import DataTable from "@/components/data-table/index.vue";
 import isLoader from "@/components/common/loader/index.vue";
 import CustomWrap from "@/components/common/custom-wrap/index.vue";
 import { Mutation, namespace } from "vuex-class";
+import jTitle from "@/components/j-title/index.vue";
 
 @Component({
   components: {
     DataTable,
     isLoader,
-    CustomWrap
+    CustomWrap,
+    jTitle
   }
 })
 export default class NoticeBoard extends Vue {
@@ -58,7 +61,7 @@ export default class NoticeBoard extends Vue {
       align: "text-center",
       column_name: "rank",
       column_align: "center",
-      width: "100px"
+      width: "50px"
     },
     {
       key: 1,
@@ -154,7 +157,7 @@ export default class NoticeBoard extends Vue {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 .dashboard-container {
   width: 100%;
   height: 100%;

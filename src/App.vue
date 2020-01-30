@@ -1,5 +1,11 @@
 <template>
   <v-app id="app">
+    <div
+      v-for="i in 40"
+      :key="i"
+      :class="`star star_${i}`"
+      :style="{left: leftPosition(), top:topPosition()}"
+    ></div>
     <div class="moon-wrap mini">
       <div class="moon1-wrap">
         <div class="moon1">
@@ -135,13 +141,71 @@ export default class App extends Vue {
       this.$router.push({ path: `${routerPath}` });
     }
   }
+
+  @Emit()
+  leftPosition() {
+    return Math.random() * 100 + "%";
+  }
+
+  @Emit()
+  topPosition() {
+    return Math.random() * 70 + "%";
+  }
 }
 </script>
 
 <style lang="scss" scoped>
+$i: 1;
 #app {
   background-image: linear-gradient(to top, #acb7dc 70%, #dcb7dc 80%);
   position: relative;
+  .star {
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-bottom: 5px solid #fff;
+    border-right: 8px solid transparent;
+    transform: rotate(35deg);
+    animation: light 3000ms infinite ease-out;
+    &::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 0;
+      height: 0;
+      top: -5px;
+      left: -4px;
+      border-left: 1.5px solid transparent;
+      border-bottom: 7px solid #fff;
+      border-right: 1.5px solid transparent;
+      transform: rotate(-35deg);
+      animation: light2 2000ms infinite ease-out;
+    }
+    &::before {
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: "";
+      top: -0.2px;
+      left: -8px;
+      border-left: 8px solid transparent;
+      border-bottom: 5px solid #fff;
+      border-right: 8px solid transparent;
+      transform: rotate(-70deg);
+      animation: light3 1000ms infinite ease-out;
+    }
+  }
+
+  $randomValue: random(100);
+  $tail: "%";
+  @while $i <= 30 {
+    .star_#{$i} {
+    }
+    $i: $i + 1;
+  }
   .moon-wrap {
     position: absolute;
     width: 500px;
@@ -238,7 +302,6 @@ export default class App extends Vue {
   }
   .mini {
     width: 300px !important;
-    
   }
 }
 
@@ -266,6 +329,42 @@ export default class App extends Vue {
   100% {
     box-shadow: 1px 1px 1px 0.2rem rgba(255, 255, 255, 0.1),
       0 0 0 0.5rem rgba(255, 255, 255, 0.1), 0 0 0 1rem rgba(255, 255, 255, 0.1);
+  }
+}
+
+@keyframes light {
+  0% {
+    border-bottom: 5px solid #fff;
+  }
+  50% {
+    border-bottom: 5px solid rgba($color: #fff, $alpha: 0.4);
+  }
+  100% {
+    border-bottom: 5px solid #fff;
+  }
+}
+
+@keyframes light2 {
+  0% {
+    border-bottom: 7px solid #fff;
+  }
+  50% {
+    border-bottom: 7px solid rgba($color: #fff, $alpha: 0.3);
+  }
+  100% {
+    border-bottom: 7px solid #fff;
+  }
+}
+
+@keyframes light3 {
+  0% {
+    border-bottom: 5px solid #fff;
+  }
+  50% {
+    border-bottom: 5px solid rgba($color: #fff, $alpha: 0.35);
+  }
+  100% {
+    border-bottom: 5px solid #fff;
   }
 }
 </style>
