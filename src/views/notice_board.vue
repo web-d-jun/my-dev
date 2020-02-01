@@ -11,9 +11,9 @@
               @click="cardFlip()"
               @mouseleave="defaultCard()"
             >
-              <v-card :class="['graph_1__card graph_1__card--front']">
-                <div class="graph">
-                  <j-title :title="'data1'" :color="'white'"></j-title>
+              <v-card :class="['graph__card graph_1__card graph_1__card--front']">
+                <div class="graph column justify-content--center align-items--center">
+                  <j-title :title="'data1-1'" :color="'#f2a649'"></j-title>
                   <div class="graph__wrap">
                     <div class="graph__bar">
                       <div
@@ -22,7 +22,7 @@
                       >{{graph_1_value}}%</div>
                     </div>
                   </div>
-                  <j-title :title="'data2'" :color="'yellow'"></j-title>
+                  <j-title :title="'data1-2'" :color="'#27498c'"></j-title>
                   <div class="graph__wrap">
                     <div class="graph__bar">
                       <div
@@ -33,8 +33,8 @@
                   </div>
                 </div>
               </v-card>
-              <v-card class="graph_1__card graph_1__card--back">
-                <div class="graph">
+              <v-card class="graph__card graph_1__card graph_1__card--back">
+                <div class="graph column justify-content--center align-items--center">
                   <div class="graph__wrap">back</div>
                 </div>
               </v-card>
@@ -44,7 +44,27 @@
         <v-flex md4 sm12 xs12 class="box">
           <custom-wrap>
             <j-title :title="'title2'"></j-title>
-            <v-card>2</v-card>
+            <div class="card__wrap">
+              <v-card class="graph__card graph_2__card">
+                <div class="graph column">
+                  <j-title :title="'data2'" :color="'#f2a649'"></j-title>
+                  <div class="graph__wrap">
+                    <div>
+                      <small>$</small>
+                      <strong>{{data2.text}}</strong>
+                    </div>
+                    <v-sparkline
+                      :value="data2.value"
+                      :line-width="data2.width"
+                      :gradient="data2.gradient[0]"
+                      :smooth="data2.radius || false"
+                      :type="'trend'"
+                      auto-draw
+                    ></v-sparkline>
+                  </div>
+                </div>
+              </v-card>
+            </div>
           </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
@@ -92,6 +112,13 @@ export default class NoticeBoard extends Vue {
   graph_1_value: number = 1;
   graph_2_value: number = 1;
   flip: boolean = false;
+  data2: any = {
+    width: 2,
+    value: [],
+    gradient: [["#42f5aa"]],
+    radius: 10,
+    text: 0
+  };
   items: object[] = [];
   headers: object[] = [
     {
@@ -153,6 +180,7 @@ export default class NoticeBoard extends Vue {
   created() {
     this.initialize();
     this.loaderInit();
+    this.data2Graph();
   }
 
   initialize() {
@@ -162,6 +190,7 @@ export default class NoticeBoard extends Vue {
 
   mounted() {
     setInterval(this.getGraphData, 5000);
+    setInterval(this.data2Graph, 5000);
   }
 
   @Emit()
@@ -178,6 +207,15 @@ export default class NoticeBoard extends Vue {
   @Emit()
   defaultCard() {
     this.flip = false;
+  }
+
+  @Emit()
+  data2Graph() {
+    this.data2.value = [];
+    for (let i = 0; i < 10; i++) {
+      this.data2.value.push(Math.round(Math.random() * 10));
+    }
+    this.data2.text = Math.round(Math.random() * 1000);
   }
 
   async getData() {
@@ -240,28 +278,43 @@ export default class NoticeBoard extends Vue {
       }
     }
 
-    .graph_1__card {
-      background-color: #405173;
+    .graph__card {
+      &.graph_1__card {
+        border: 4px solid rgba(#405173, 0.4);
+        border-bottom-color: #405173;
+        &--front {
+          transform: rotateX(0deg);
+          transition: all 1000ms;
+        }
+        &--back {
+          transform: rotateX(90deg);
+          transition: all 500ms;
+        }
+      }
+
+      &.graph_2__card {
+        border: 4px solid rgba(#42f5aa, 0.4);
+        border-bottom-color: #42f5aa;
+      }
       position: absolute;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      &--front {
-        transform: rotateX(0deg);
-        transition: all 1000ms;
-      }
-      &--back {
-        transform: rotateX(90deg);
-        transition: all 500ms;
-      }
 
       .graph {
         height: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        &.column {
+          flex-direction: column;
+        }
+        &.justify-content--center {
+          justify-content: center;
+        }
+        &.align-items--center {
+          align-items: center;
+        }
+
         padding: 0 10px;
 
         .graph__wrap {
