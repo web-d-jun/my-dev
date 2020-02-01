@@ -169,7 +169,7 @@ $i: 1;
     border-bottom: 5px solid #fff;
     border-right: 8px solid transparent;
     transform: rotate(35deg);
-    animation: light 3000ms infinite ease-out;
+    // animation: light 3000ms infinite ease-out;
     &::after {
       position: absolute;
       display: block;
@@ -182,7 +182,7 @@ $i: 1;
       border-bottom: 7px solid #fff;
       border-right: 1.5px solid transparent;
       transform: rotate(-35deg);
-      animation: light2 2000ms infinite ease-out;
+      // animation: light2 2000ms infinite ease-out;
     }
     &::before {
       position: absolute;
@@ -195,7 +195,7 @@ $i: 1;
       border-bottom: 5px solid #fff;
       border-right: 8px solid transparent;
       transform: rotate(-70deg);
-      animation: light3 1000ms infinite ease-out;
+      // animation: light3 1000ms infinite ease-out;
     }
   }
 
