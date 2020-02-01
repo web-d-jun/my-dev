@@ -6,26 +6,39 @@
         <v-flex md4 sm12 xs12 class="box">
           <custom-wrap>
             <j-title :title="'graph_1'"></j-title>
-            <v-card class="graph_1__card">
-              <div class="graph">
-                <div class="graph__wrap">
-                  <div class="graph__bar">
-                    <div
-                      class="inner__bar inner__bar--one"
-                      :style="{width: `${graph_1_value}%`}"
-                    >{{graph_1_value}}%</div>
+            <div
+              :class="['card__wrap',{'flip': flip}]"
+              @click="cardFlip()"
+              @mouseleave="defaultCard()"
+            >
+              <v-card :class="['graph_1__card graph_1__card--front']">
+                <div class="graph">
+                  <j-title :title="'data1'" :color="'white'"></j-title>
+                  <div class="graph__wrap">
+                    <div class="graph__bar">
+                      <div
+                        class="inner__bar inner__bar--one"
+                        :style="{width: `${graph_1_value}%`}"
+                      >{{graph_1_value}}%</div>
+                    </div>
+                  </div>
+                  <j-title :title="'data2'" :color="'yellow'"></j-title>
+                  <div class="graph__wrap">
+                    <div class="graph__bar">
+                      <div
+                        class="inner__bar inner__bar--two"
+                        :style="{width: `${graph_2_value}%`}"
+                      >{{graph_2_value}}%</div>
+                    </div>
                   </div>
                 </div>
-                <div class="graph__wrap">
-                  <div class="graph__bar">
-                    <div
-                      class="inner__bar inner__bar--two"
-                      :style="{width: `${graph_2_value}%`}"
-                    >{{graph_2_value}}%</div>
-                  </div>
+              </v-card>
+              <v-card class="graph_1__card graph_1__card--back">
+                <div class="graph">
+                  <div class="graph__wrap">back</div>
                 </div>
-              </div>
-            </v-card>
+              </v-card>
+            </div>
           </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
@@ -78,6 +91,7 @@ export default class NoticeBoard extends Vue {
   dialog: boolean = false;
   graph_1_value: number = 1;
   graph_2_value: number = 1;
+  flip: boolean = false;
   items: object[] = [];
   headers: object[] = [
     {
@@ -156,6 +170,16 @@ export default class NoticeBoard extends Vue {
     this.graph_2_value = Math.round(Math.random() * 100);
   }
 
+  @Emit()
+  cardFlip() {
+    this.flip = !this.flip;
+  }
+
+  @Emit()
+  defaultCard() {
+    this.flip = false;
+  }
+
   async getData() {
     let target = (this as any)
       .$moment()
@@ -197,66 +221,100 @@ export default class NoticeBoard extends Vue {
 .dashboard-container {
   width: 100%;
   height: 100%;
+  .card__wrap {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    cursor: pointer;
+    &.flip {
+      &:hover {
+        .graph_1__card--front {
+          transform: rotateX(90deg);
+          transition: all 500ms;
+          opacity: 0;
+        }
+        .graph_1__card--back {
+          transform: rotateX(0deg);
+          transition: all 1000ms;
+        }
+      }
+    }
 
-  .graph_1__card {
-    background-color: #405173;
-    .graph {
-      height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 0 10px;
-      .graph__wrap {
-        width: 100%;
-        height: 40px;
-        padding: 10px;
-        .graph__bar {
-          border: 1px solid #d9d9d9;
+    .graph_1__card {
+      background-color: #405173;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      &--front {
+        transform: rotateX(0deg);
+        transition: all 1000ms;
+      }
+      &--back {
+        transform: rotateX(90deg);
+        transition: all 500ms;
+      }
+
+      .graph {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+
+        .graph__wrap {
           width: 100%;
-          height: 100%;
-          position: relative;
-
-          .inner__bar {
-            left: 0;
-            top: 0;
+          height: 40px;
+          padding: 10px;
+          .graph__bar {
+            border: 1px solid #d9d9d9;
+            width: 100%;
             height: 100%;
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: width 2000ms;
 
-            &--one {
-              background-color: #f2a649;
-              color: #27498c;
-            }
+            .inner__bar {
+              left: 0;
+              top: 0;
+              height: 100%;
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              transition: width 2000ms;
 
-            &--two {
-              background-color: #27498c;
-              color: #f2a649;
-            }
+              &--one {
+                background-color: #f2a649;
+                color: #27498c;
+              }
 
-            &::after {
-              position: absolute;
-              content: "";
-              right: -2px;
-              bottom: 0;
-              width: 4px;
-              height: 30px;
-              // border: 1px groove #f2a649;
-              background-color: #f26e50;
-            }
+              &--two {
+                background-color: #27498c;
+                color: #f2a649;
+              }
 
-            &::before {
-              position: absolute;
-              content: "";
-              right: -5px;
-              top: -20px;
-              width: 10px;
-              height: 10px;
-              border-radius: 50%;
-              background-color: #f26e50;
+              &::after {
+                position: absolute;
+                content: "";
+                right: -2px;
+                bottom: 0;
+                width: 4px;
+                height: 30px;
+                // border: 1px groove #f2a649;
+                background-color: #f26e50;
+              }
+
+              &::before {
+                position: absolute;
+                content: "";
+                right: -5px;
+                top: -20px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: #f26e50;
+              }
             }
           }
         }
