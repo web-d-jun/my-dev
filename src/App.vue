@@ -79,7 +79,7 @@
           </template>
         </div>
 
-        <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini">SUBSCRIPTIONS</v-subheader>
+        <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini"></v-subheader>
       </v-list>
     </v-navigation-drawer>
 
