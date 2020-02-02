@@ -251,6 +251,7 @@ export default class NoticeBoard extends Vue {
   @Emit()
   data2Graph() {
     this.data2.value = [];
+    this.data3.value = [];
     for (let i = 0; i < 10; i++) {
       this.data2.value.push(Math.round(Math.random() * 10));
     }
