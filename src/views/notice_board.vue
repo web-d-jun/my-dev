@@ -44,8 +44,12 @@
         <v-flex md4 sm12 xs12 class="box">
           <custom-wrap>
             <j-title :title="'title2'"></j-title>
-            <div class="card__wrap">
-              <v-card class="graph__card graph_2__card">
+            <div
+              :class="['card__wrap',{'flip': flip}]"
+              @click="cardFlip()"
+              @mouseleave="defaultCard()"
+            >
+              <v-card class="graph__card graph_2__card graph_2__card--front">
                 <div class="graph column">
                   <j-title :title="'data2'" :color="'#f2a649'"></j-title>
                   <div class="graph__wrap">
@@ -62,6 +66,11 @@
                       auto-draw
                     ></v-sparkline>
                   </div>
+                </div>
+              </v-card>
+              <v-card class="graph__card graph_2__card graph_2__card--back">
+                <div class="graph column justify-content--center align-items--center">
+                  <div class="graph__wrap">back</div>
                 </div>
               </v-card>
             </div>
@@ -266,12 +275,14 @@ export default class NoticeBoard extends Vue {
     cursor: pointer;
     &.flip {
       &:hover {
-        .graph_1__card--front {
+        .graph_1__card--front,
+        .graph_2__card--front {
           transform: rotateX(90deg);
           transition: all 500ms;
           opacity: 0;
         }
-        .graph_1__card--back {
+        .graph_1__card--back,
+        .graph_2__card--back {
           transform: rotateX(0deg);
           transition: all 1000ms;
         }
@@ -279,7 +290,8 @@ export default class NoticeBoard extends Vue {
     }
 
     .graph__card {
-      &.graph_1__card {
+      &.graph_1__card,
+      &.graph_2__card {
         border: 4px solid rgba(#405173, 0.4);
         border-bottom-color: #405173;
         &--front {
