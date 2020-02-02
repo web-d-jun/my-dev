@@ -79,13 +79,36 @@
         <v-flex md4 sm12 xs12 class="box">
           <custom-wrap>
             <j-title :title="'title3'"></j-title>
-            <v-card>3</v-card>
-          </custom-wrap>
-        </v-flex>
-        <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap>
-            <j-title :title="'title4'"></j-title>
-            <v-card>3</v-card>
+            <div
+              :class="['card__wrap',{'flip': flip}]"
+              @click="cardFlip()"
+              @mouseleave="defaultCard()"
+            >
+              <v-card class="graph__card graph_3__card graph_3__card--front">
+                <div class="graph column">
+                  <j-title :title="'data3'" :color="'#f2a649'"></j-title>
+                  <div class="graph__wrap">
+                    <div>
+                      <small>$</small>
+                      <strong>{{data3.text}}</strong>
+                    </div>
+                    <v-sparkline
+                      :value="data3.value"
+                      :line-width="data3.width"
+                      :gradient="data3.gradient[0]"
+                      :smooth="data3.radius || false"
+                      :type="'trend'"
+                      auto-draw
+                    ></v-sparkline>
+                  </div>
+                </div>
+              </v-card>
+              <v-card class="graph__card graph_3__card graph_3__card--back">
+                <div class="graph column justify-content--center align-items--center">
+                  <div class="graph__wrap">back</div>
+                </div>
+              </v-card>
+            </div>
           </custom-wrap>
         </v-flex>
       </v-row>
@@ -125,6 +148,13 @@ export default class NoticeBoard extends Vue {
     width: 2,
     value: [],
     gradient: [["#42f5aa"]],
+    radius: 10,
+    text: 0
+  };
+  data3: any = {
+    width: 2,
+    value: [],
+    gradient: [["#e6007e"]],
     radius: 10,
     text: 0
   };
@@ -224,7 +254,11 @@ export default class NoticeBoard extends Vue {
     for (let i = 0; i < 10; i++) {
       this.data2.value.push(Math.round(Math.random() * 10));
     }
+    for (let i = 0; i < 15; i++) {
+      this.data3.value.push(Math.round(Math.random() * 10));
+    }
     this.data2.text = Math.round(Math.random() * 1000);
+    this.data3.text = Math.round(Math.random() * 1000);
   }
 
   async getData() {
@@ -276,13 +310,15 @@ export default class NoticeBoard extends Vue {
     &.flip {
       &:hover {
         .graph_1__card--front,
-        .graph_2__card--front {
+        .graph_2__card--front,
+        .graph_3__card--front {
           transform: rotateX(90deg);
           transition: all 500ms;
           opacity: 0;
         }
         .graph_1__card--back,
-        .graph_2__card--back {
+        .graph_2__card--back,
+        .graph_3__card--back {
           transform: rotateX(0deg);
           transition: all 1000ms;
         }
@@ -290,8 +326,7 @@ export default class NoticeBoard extends Vue {
     }
 
     .graph__card {
-      &.graph_1__card,
-      &.graph_2__card {
+      &.graph_1__card {
         border: 4px solid rgba(#405173, 0.4);
         border-bottom-color: #405173;
         &--front {
@@ -307,6 +342,27 @@ export default class NoticeBoard extends Vue {
       &.graph_2__card {
         border: 4px solid rgba(#42f5aa, 0.4);
         border-bottom-color: #42f5aa;
+        &--front {
+          transform: rotateX(0deg);
+          transition: all 1000ms;
+        }
+        &--back {
+          transform: rotateX(90deg);
+          transition: all 500ms;
+        }
+      }
+      
+      &.graph_3__card {
+        border: 4px solid rgba(#e6007e, 0.4);
+        border-bottom-color: #e6007e;
+        &--front {
+          transform: rotateX(0deg);
+          transition: all 1000ms;
+        }
+        &--back {
+          transform: rotateX(90deg);
+          transition: all 500ms;
+        }
       }
       position: absolute;
       left: 0;
