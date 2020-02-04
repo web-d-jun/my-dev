@@ -99,6 +99,7 @@ export default class home extends Vue {
     this.loaderInit();
     this.getData();
     this.getChart();
+    
   }
 
   async getData() {
