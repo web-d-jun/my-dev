@@ -1,4 +1,4 @@
-import  * as image from "../assets/index";
+import * as image from "../assets/index";
 
 interface Path {
   icon: any;
@@ -20,12 +20,27 @@ const Path: Array<Path> = [
     routerPath: "/dashboard"
   },
   {
+    icon: image.graphql,
+    text: "GraphQL",
+    group: true,
+    deep_1: [
+      {
+        text: "GraphQL Definition",
+        routerPath: ""
+      },
+      {
+        text: "GraphQL - CRUD",
+        routerPath: ""
+      }
+    ]
+  },
+  {
     icon: image.vuejs,
     text: "Vue",
     group: true,
     deep_1: [
       {
-        text: "",
+        text: "Vue.js Definition",
         routerPath: ""
       }
     ]
@@ -33,17 +48,6 @@ const Path: Array<Path> = [
   {
     icon: image.react,
     text: "React",
-    group: true,
-    deep_1: [
-      {
-        text: "",
-        routerPath: ""
-      }
-    ]
-  },
-  {
-    icon: image.graphql,
-    text: "GraphQL",
     group: true,
     deep_1: [
       {
