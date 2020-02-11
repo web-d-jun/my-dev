@@ -26,11 +26,11 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "GraphQL Definition",
-        routerPath: ""
+        routerPath: "/*"
       },
       {
         text: "GraphQL - CRUD",
-        routerPath: ""
+        routerPath: "/graphql/crud"
       }
     ]
   },
@@ -41,7 +41,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "Vue.js Definition",
-        routerPath: ""
+        routerPath: "/vue/def"
       }
     ]
   },
@@ -51,8 +51,8 @@ const Path: Array<Path> = [
     group: true,
     deep_1: [
       {
-        text: "",
-        routerPath: ""
+        text: "-",
+        routerPath: "/*"
       }
     ]
   }
