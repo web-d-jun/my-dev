@@ -15,6 +15,11 @@ const routes = [
     component: () => import("@/views/notice_board.vue")
   },
   {
+    path: "/page1",
+    name: "page",
+    component: () => import("@/views/page1/index.vue")
+  },
+  {
     path: "/vue/notice_board",
     name: "notice_board",
     component: () => import("@/views/notice_board.vue")

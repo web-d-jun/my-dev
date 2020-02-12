@@ -20,6 +20,11 @@ const Path: Array<Path> = [
     routerPath: "/dashboard"
   },
   {
+    icon: "mdi-book-open-page-variant",
+    text: "data post",
+    routerPath: "/page1"
+  },
+  {
     icon: image.graphql,
     text: "GraphQL",
     group: true,

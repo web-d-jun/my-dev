@@ -95,6 +95,13 @@
     </v-app-bar>
     <v-content>
       <v-container class="fill-height align-start">
+        <div class="alert-state">
+          <v-alert
+            type="success"
+            :value="alertState"
+            transition="slide-x-reverse-transition"
+          >success</v-alert>
+        </div>
         <v-col>
           <router-view></router-view>
         </v-col>
@@ -107,6 +114,7 @@
 import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import Path from "@/router/path";
 import isLoader from "@/components/common/loader/index.vue";
+import { State, namespace } from "vuex-class";
 
 @Component({
   components: {
@@ -122,8 +130,12 @@ export default class App extends Vue {
   is_device: string = "";
   test: string = "clipped";
 
+  @State("stateValue", { namespace: "alertStateModule" })
+  stateValue!: boolean;
+
   created() {
     // this.$vuetify.theme.dark = true;
+
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
       if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
@@ -137,6 +149,10 @@ export default class App extends Vue {
   }
 
   init() {}
+
+  get alertState() {
+    return this.stateValue;
+  }
 
   @Emit()
   routerGo(routerPath: string) {
@@ -292,6 +308,12 @@ $i: 1;
         min-width: 20px !important;
       }
     }
+  }
+  .alert-state {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
   }
 }
 
