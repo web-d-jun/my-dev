@@ -25,6 +25,11 @@ const Path: Array<Path> = [
     routerPath: "/page1"
   },
   {
+    icon: "mdi-chat-processing-outline",
+    text: "chatting",
+    routerPath: "/chat"
+  },
+  {
     icon: image.graphql,
     text: "GraphQL",
     group: true,
