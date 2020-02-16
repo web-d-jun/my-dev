@@ -89,7 +89,7 @@
       <v-toolbar-title class="mr-12 align-center">
         <span class="title">
           J
-          <small>(made by Vue.js)</small>
+          <small>(made with Vue.js)</small>
         </span>
       </v-toolbar-title>
     </v-app-bar>
