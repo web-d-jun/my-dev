@@ -18,7 +18,7 @@
         </custom-wrap>
       </v-flex>
       <v-flex md3 sm12 xs12>
-        <custom-wrap :title="'title2'">
+        <custom-wrap :title="'main-title2'">
           <div class="card__wrap">
             <v-card class="title">
               <div class="d-flex flex-column">
