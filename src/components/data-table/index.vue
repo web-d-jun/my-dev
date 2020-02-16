@@ -1,6 +1,6 @@
 <template>
   <div class="data-table">
-    <v-card class="d-none d-sm-block transparent">
+    <v-card class="d-none d-sm-block">
       <v-flex md12>
         <v-row>
           <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>

@@ -3,9 +3,9 @@
     <is-loader></is-loader>
     <v-row>
       <v-flex md3 sm12 xs12>
-        <custom-wrap>
+        <custom-wrap :title="'title1'">
           <div class="card__wrap">
-            <v-card>
+            <v-card class="title">
               <div class="d-flex flex-column">
                 <div class="d-flex flex-row align-center">Total data1-1</div>
                 <div class="d-flex flex-row justify-space-between align-center">
@@ -18,9 +18,9 @@
         </custom-wrap>
       </v-flex>
       <v-flex md3 sm12 xs12>
-        <custom-wrap>
+        <custom-wrap :title="'title2'">
           <div class="card__wrap">
-            <v-card>
+            <v-card class="title">
               <div class="d-flex flex-column">
                 <div class="d-flex flex-row align-center">Total data1-2</div>
                 <div class="d-flex flex-row justify-space-between align-center">
@@ -33,22 +33,24 @@
         </custom-wrap>
       </v-flex>
       <v-flex md3 sm12 xs12>
-        <custom-wrap>
+        <custom-wrap :title="'title3'">
           <div class="card__wrap">
-            <v-card><div class="d-flex flex-column">
+            <v-card class="title">
+              <div class="d-flex flex-column">
                 <div class="d-flex flex-row align-center">Total data1-3</div>
                 <div class="d-flex flex-row justify-space-between align-center">
                   <bar-graph :width="'100px'" :height="'60px'" :data="data3" :border="'#9b91ed'"></bar-graph>
                   <j-badge :innerText="data3_innerText" :background="'#9b91ed'" :opacity="0.4"></j-badge>
                 </div>
-              </div></v-card>
+              </div>
+            </v-card>
           </div>
         </custom-wrap>
       </v-flex>
       <v-flex md3 sm12 xs12>
-        <custom-wrap>
+        <custom-wrap :title="'title4'">
           <div class="card__wrap">
-            <v-card>
+            <v-card class="title">
               <div class="d-flex flex-column">
                 <div class="d-flex flex-row align-center">Total data1-4</div>
                 <div class="d-flex flex-row justify-space-between align-center">
@@ -99,7 +101,6 @@ export default class home extends Vue {
     this.loaderInit();
     this.getData();
     this.getChart();
-    
   }
 
   async getData() {
@@ -156,7 +157,10 @@ export default class home extends Vue {
       width: 100%;
       height: 100%;
       padding: 10px;
-      background-color: rgba(255,255,255,0.5);
+      background-color: rgba(255, 255, 255, 0.5);
+      &.title {
+        border-radius: 0 4px 4px 4px;
+      }
       .flex-column {
         height: 100%;
       }

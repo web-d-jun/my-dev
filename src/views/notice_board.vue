@@ -4,8 +4,7 @@
     <v-flex>
       <v-row>
         <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap>
-            <j-title :title="'graph_1'"></j-title>
+          <custom-wrap :title="'data-1'">
             <div
               :class="['card__wrap',{'flip': flip}]"
               @click="cardFlip()"
@@ -13,7 +12,6 @@
             >
               <v-card :class="['graph__card graph_1__card graph_1__card--front']">
                 <div class="graph column justify-content--center align-items--center">
-                  <j-title :title="'data1-1'" :color="'#f2a649'"></j-title>
                   <div class="graph__wrap">
                     <div class="graph__bar">
                       <div
@@ -22,7 +20,7 @@
                       >{{graph_1_value}}%</div>
                     </div>
                   </div>
-                  <j-title :title="'data1-2'" :color="'#27498c'"></j-title>
+
                   <div class="graph__wrap">
                     <div class="graph__bar">
                       <div
@@ -42,8 +40,7 @@
           </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap>
-            <j-title :title="'title2'"></j-title>
+          <custom-wrap :title="'data-2'">
             <div
               :class="['card__wrap',{'flip': flip}]"
               @click="cardFlip()"
@@ -51,7 +48,6 @@
             >
               <v-card class="graph__card graph_2__card graph_2__card--front">
                 <div class="graph column">
-                  <j-title :title="'data2'" :color="'#f2a649'"></j-title>
                   <div class="graph__wrap">
                     <div>
                       <small>$</small>
@@ -77,8 +73,7 @@
           </custom-wrap>
         </v-flex>
         <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap>
-            <j-title :title="'title3'"></j-title>
+          <custom-wrap :title="'data-3'">
             <div
               :class="['card__wrap',{'flip': flip}]"
               @click="cardFlip()"
@@ -86,7 +81,6 @@
             >
               <v-card class="graph__card graph_3__card graph_3__card--front">
                 <div class="graph column">
-                  <j-title :title="'data3'" :color="'#f2a649'"></j-title>
                   <div class="graph__wrap">
                     <div>
                       <small>$</small>
@@ -114,8 +108,7 @@
       </v-row>
       <v-row>
         <v-flex>
-          <custom-wrap>
-            <j-title :title="'영화'"></j-title>
+          <custom-wrap :title="'movie'">
             <data-table :headers="headers" :items="items"></data-table>
           </custom-wrap>
         </v-flex>
@@ -129,14 +122,12 @@ import DataTable from "@/components/data-table/index.vue";
 import isLoader from "@/components/common/loader/index.vue";
 import CustomWrap from "@/components/common/custom-wrap/index.vue";
 import { Mutation, namespace } from "vuex-class";
-import jTitle from "@/components/j-title/index.vue";
 
 @Component({
   components: {
     DataTable,
     isLoader,
-    CustomWrap,
-    jTitle
+    CustomWrap
   }
 })
 export default class NoticeBoard extends Vue {
@@ -327,8 +318,12 @@ export default class NoticeBoard extends Vue {
     }
 
     .graph__card {
+      border-radius: 0 4px 4px 4px !important;
+
       &.graph_1__card {
         border: 4px solid rgba(#405173, 0.4);
+        border-top: 0;
+        border-left: 0;
         border-bottom-color: #405173;
         &--front {
           transform: rotateX(0deg);
@@ -342,6 +337,8 @@ export default class NoticeBoard extends Vue {
 
       &.graph_2__card {
         border: 4px solid rgba(#42f5aa, 0.4);
+        border-top: 0;
+        border-left: 0;
         border-bottom-color: #42f5aa;
         &--front {
           transform: rotateX(0deg);
@@ -352,10 +349,12 @@ export default class NoticeBoard extends Vue {
           transition: all 500ms;
         }
       }
-      
+
       &.graph_3__card {
         border: 4px solid rgba(#e6007e, 0.4);
         border-bottom-color: #e6007e;
+        border-top: 0;
+        border-left: 0;
         &--front {
           transform: rotateX(0deg);
           transition: all 1000ms;
