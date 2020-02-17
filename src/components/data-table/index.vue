@@ -2,10 +2,10 @@
   <div class="data-table">
     <v-card class="d-none d-sm-block">
       <v-flex md12>
-        <v-row>
+        <v-row class="row-border">
           <v-col v-for="header in headers" :key="header.key" :class="[header.align]">{{header.name}}</v-col>
         </v-row>
-        <v-row v-for="item in items" :key="item.rank">
+        <v-row v-for="item in items" :key="item.rank" class="row-border">
           <v-col
             v-for="(i,index) in headers.length"
             :key="i"
@@ -24,10 +24,10 @@
           :src="item.imgUrl"
         ></v-img>
         <v-flex v-for="header in headers" :key="header.key">
-          <v-row>
+          <v-row class="row-border">
             <v-col>{{header.name}}</v-col>
           </v-row>
-          <v-row>
+          <v-row class="row-border">
             <v-col class="col--content">{{item[header.column_name]}}</v-col>
           </v-row>
         </v-flex>
@@ -51,7 +51,7 @@ export default class DataTable extends Vue {
 .data-table {
   width: 100%;
   height: 100%;
-  .row {
+  .row-border {
     margin: 0;
     border: 0;
     border-top: 1px solid #323232;
@@ -71,7 +71,7 @@ export default class DataTable extends Vue {
       border-bottom: 1px solid #323232;
       .col {
         &--content {
-          background-color: #EEEEEE;
+          background-color: #eeeeee;
         }
       }
     }
