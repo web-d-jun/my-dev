@@ -308,6 +308,7 @@ $i: 1;
     .navigation__text {
       font-size: 20px;
       font-family: "Noto Sans KR", sans-serif !important;
+      color: #424242;
     }
   }
   .v-list-item__action {
