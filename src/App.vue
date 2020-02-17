@@ -85,14 +85,29 @@
     <v-app-bar app clipped-left elevate-on-scroll dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
-      <v-toolbar-title class="mr-12 align-center">
+      <v-toolbar-title class="align-center">
         <span class="title">
           J
           <small>(made with Vue.js)</small>
         </span>
       </v-toolbar-title>
       <transition name="slide-x-reverse-transition">
-        <div class="navigation__text">{{routeInfo}}</div>
+        <div class="toolbar__contents__wrap">
+          <div class="navigation__text">{{routeInfo}}</div>
+          <div class="history__container">
+            <j-item :innerText="'122'" />
+            <j-item :innerText="'testestestestse'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestestestseaaaaaaaaaaa'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+            <j-item :innerText="'testestest'" />
+          </div>
+        </div>
       </transition>
     </v-app-bar>
     <v-content>
@@ -117,21 +132,23 @@
 <script lang="ts">
 import { Component, Vue, Prop, Emit } from "vue-property-decorator";
 import Path from "@/router/path";
-import isLoader from "@/components/common/loader/index.vue";
 import { State, namespace } from "vuex-class";
+import isLoader from "@/components/common/loader/index.vue";
+import JItem from "@/components/j-item/index.vue";
 
 @Component({
   components: {
-    isLoader
+    isLoader,
+    JItem
   }
 })
 export default class App extends Vue {
   @Prop() source: any;
   theme: any = { dark: true };
-  drawer: any = null;
-  mini: boolean = false;
-  urlPath: any = Path;
-  is_device: string = "";
+  private drawer: any = null;
+  private mini: boolean = false;
+  private urlPath: any = Path;
+  private is_device: string = "";
   test: string = "clipped";
 
   @State("stateValue", { namespace: "alertStateModule" })
@@ -183,6 +200,7 @@ export default class App extends Vue {
 <style lang="scss" scoped>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 $i: 1;
+$toolbar_height: 80px;
 #app {
   background-image: linear-gradient(to top, #acb7dc 70%, #dcb7dc 80%);
   position: relative;
@@ -301,16 +319,33 @@ $i: 1;
     color: #676f84;
   }
   .v-navigation-drawer {
+    top: $toolbar_height !important;
     background: transparent;
   }
   .v-toolbar {
+    height: $toolbar_height !important;
     background: #dcb7dc;
-    .navigation__text {
-      font-size: 20px;
-      font-family: "Noto Sans KR", sans-serif !important;
-      color: #424242;
+
+    ::v-deep .v-toolbar__content {
+      height: 100% !important;
+    }
+    .toolbar__contents__wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      .navigation__text {
+        font-size: 20px;
+        font-family: "Noto Sans KR", sans-serif !important;
+        color: #424242;
+      }
+      .history__container {
+        display: flex;
+        max-width: 80vw;
+        overflow-x: auto;
+      }
     }
   }
+
   .v-list-item__action {
     width: 20px;
     height: 20px;
@@ -327,6 +362,12 @@ $i: 1;
     right: 0;
     top: 0;
     width: 300px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .v-toolbar__title {
+    margin-right: 48px;
   }
 }
 
