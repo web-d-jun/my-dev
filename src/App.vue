@@ -92,6 +92,7 @@
           <small>(made with Vue.js)</small>
         </span>
       </v-toolbar-title>
+      <div class="navigation__text">{{routeInfo}}</div>
     </v-app-bar>
     <v-content>
       <v-container class="fill-height align-start">
@@ -103,7 +104,9 @@
           >success</v-alert>
         </div>
         <v-col>
-          <router-view></router-view>
+          <transition name="slide-x-reverse-transition">
+            <router-view></router-view>
+          </transition>
         </v-col>
       </v-container>
     </v-content>
@@ -135,7 +138,6 @@ export default class App extends Vue {
 
   created() {
     // this.$vuetify.theme.dark = true;
-
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
       if (filter.indexOf(navigator.platform.toLowerCase()) < 0) {
@@ -148,7 +150,11 @@ export default class App extends Vue {
     }
   }
 
-  init() {}
+  private init() {}
+
+  get routeInfo() {
+    return this.$route.name;
+  }
 
   get alertState() {
     return this.stateValue;
@@ -174,6 +180,7 @@ export default class App extends Vue {
 </script>
 
 <style lang="scss" scoped>
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 $i: 1;
 #app {
   background-image: linear-gradient(to top, #acb7dc 70%, #dcb7dc 80%);
@@ -297,6 +304,10 @@ $i: 1;
   }
   .v-toolbar {
     background: #dcb7dc;
+    .navigation__text {
+      font-size: 20px;
+      font-family: "Noto Sans KR", sans-serif !important;
+    }
   }
   .v-list-item__action {
     width: 20px;
