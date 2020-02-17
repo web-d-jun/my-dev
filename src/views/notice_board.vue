@@ -1,119 +1,117 @@
 <template>
   <div class="dashboard-container">
     <is-loader></is-loader>
-    <v-flex>
-      <v-row>
-        <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap :title="'data-1'">
-            <div
-              :class="['card__wrap',{'flip': flip}]"
-              @click="cardFlip()"
-              @mouseleave="defaultCard()"
-            >
-              <v-card :class="['graph__card graph_1__card graph_1__card--front']">
-                <div class="graph column justify-content--center align-items--center">
-                  <div class="graph__wrap">
-                    <div class="graph__bar">
-                      <div
-                        class="inner__bar inner__bar--one"
-                        :style="{width: `${graph_1_value}%`}"
-                      >{{graph_1_value}}%</div>
-                    </div>
+    <v-row>
+      <v-flex md4 sm12 xs12 class="box">
+        <custom-wrap :title="'data-1'">
+          <div
+            :class="['card__wrap',{'flip': flip}]"
+            @click="cardFlip()"
+            @mouseleave="defaultCard()"
+          >
+            <v-card :class="['graph__card graph_1__card graph_1__card--front']">
+              <div class="graph column justify-content--center align-items--center">
+                <div class="graph__wrap">
+                  <div class="graph__bar">
+                    <div
+                      class="inner__bar inner__bar--one"
+                      :style="{width: `${graph_1_value}%`}"
+                    >{{graph_1_value}}%</div>
                   </div>
+                </div>
 
-                  <div class="graph__wrap">
-                    <div class="graph__bar">
-                      <div
-                        class="inner__bar inner__bar--two"
-                        :style="{width: `${graph_2_value}%`}"
-                      >{{graph_2_value}}%</div>
-                    </div>
+                <div class="graph__wrap">
+                  <div class="graph__bar">
+                    <div
+                      class="inner__bar inner__bar--two"
+                      :style="{width: `${graph_2_value}%`}"
+                    >{{graph_2_value}}%</div>
                   </div>
                 </div>
-              </v-card>
-              <v-card class="graph__card graph_1__card graph_1__card--back">
-                <div class="graph column justify-content--center align-items--center">
-                  <div class="graph__wrap">back</div>
-                </div>
-              </v-card>
-            </div>
-          </custom-wrap>
-        </v-flex>
-        <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap :title="'data-2'">
-            <div
-              :class="['card__wrap',{'flip': flip}]"
-              @click="cardFlip()"
-              @mouseleave="defaultCard()"
-            >
-              <v-card class="graph__card graph_2__card graph_2__card--front">
-                <div class="graph column">
-                  <div class="graph__wrap">
-                    <div>
-                      <small>$</small>
-                      <strong>{{data2.text}}</strong>
-                    </div>
-                    <v-sparkline
-                      :value="data2.value"
-                      :line-width="data2.width"
-                      :gradient="data2.gradient[0]"
-                      :smooth="data2.radius || false"
-                      :type="'trend'"
-                      auto-draw
-                    ></v-sparkline>
+              </div>
+            </v-card>
+            <v-card class="graph__card graph_1__card graph_1__card--back">
+              <div class="graph column justify-content--center align-items--center">
+                <div class="graph__wrap">back</div>
+              </div>
+            </v-card>
+          </div>
+        </custom-wrap>
+      </v-flex>
+      <v-flex md4 sm12 xs12 class="box">
+        <custom-wrap :title="'data-2'">
+          <div
+            :class="['card__wrap',{'flip': flip}]"
+            @click="cardFlip()"
+            @mouseleave="defaultCard()"
+          >
+            <v-card class="graph__card graph_2__card graph_2__card--front">
+              <div class="graph column">
+                <div class="graph__wrap">
+                  <div>
+                    <small>$</small>
+                    <strong>{{data2.text}}</strong>
                   </div>
+                  <v-sparkline
+                    :value="data2.value"
+                    :line-width="data2.width"
+                    :gradient="data2.gradient[0]"
+                    :smooth="data2.radius || false"
+                    :type="'trend'"
+                    auto-draw
+                  ></v-sparkline>
                 </div>
-              </v-card>
-              <v-card class="graph__card graph_2__card graph_2__card--back">
-                <div class="graph column justify-content--center align-items--center">
-                  <div class="graph__wrap">back</div>
-                </div>
-              </v-card>
-            </div>
-          </custom-wrap>
-        </v-flex>
-        <v-flex md4 sm12 xs12 class="box">
-          <custom-wrap :title="'data-3'">
-            <div
-              :class="['card__wrap',{'flip': flip}]"
-              @click="cardFlip()"
-              @mouseleave="defaultCard()"
-            >
-              <v-card class="graph__card graph_3__card graph_3__card--front">
-                <div class="graph column">
-                  <div class="graph__wrap">
-                    <div>
-                      <small>$</small>
-                      <strong>{{data3.text}}</strong>
-                    </div>
-                    <v-sparkline
-                      :value="data3.value"
-                      :line-width="data3.width"
-                      :gradient="data3.gradient[0]"
-                      :smooth="data3.radius || false"
-                      :type="'trend'"
-                      auto-draw
-                    ></v-sparkline>
+              </div>
+            </v-card>
+            <v-card class="graph__card graph_2__card graph_2__card--back">
+              <div class="graph column justify-content--center align-items--center">
+                <div class="graph__wrap">back</div>
+              </div>
+            </v-card>
+          </div>
+        </custom-wrap>
+      </v-flex>
+      <v-flex md4 sm12 xs12 class="box">
+        <custom-wrap :title="'data-3'">
+          <div
+            :class="['card__wrap',{'flip': flip}]"
+            @click="cardFlip()"
+            @mouseleave="defaultCard()"
+          >
+            <v-card class="graph__card graph_3__card graph_3__card--front">
+              <div class="graph column">
+                <div class="graph__wrap">
+                  <div>
+                    <small>$</small>
+                    <strong>{{data3.text}}</strong>
                   </div>
+                  <v-sparkline
+                    :value="data3.value"
+                    :line-width="data3.width"
+                    :gradient="data3.gradient[0]"
+                    :smooth="data3.radius || false"
+                    :type="'trend'"
+                    auto-draw
+                  ></v-sparkline>
                 </div>
-              </v-card>
-              <v-card class="graph__card graph_3__card graph_3__card--back">
-                <div class="graph column justify-content--center align-items--center">
-                  <div class="graph__wrap">back</div>
-                </div>
-              </v-card>
-            </div>
-          </custom-wrap>
-        </v-flex>
-      </v-row>
-      <v-row>
-        <v-flex>
-          <custom-wrap :title="'movie'">
-            <data-table :headers="headers" :items="items"></data-table>
-          </custom-wrap>
-        </v-flex>
-      </v-row>
-    </v-flex>
+              </div>
+            </v-card>
+            <v-card class="graph__card graph_3__card graph_3__card--back">
+              <div class="graph column justify-content--center align-items--center">
+                <div class="graph__wrap">back</div>
+              </div>
+            </v-card>
+          </div>
+        </custom-wrap>
+      </v-flex>
+    </v-row>
+    <v-row>
+      <v-flex>
+        <custom-wrap :title="'movie'">
+          <data-table :headers="headers" :items="items"></data-table>
+        </custom-wrap>
+      </v-flex>
+    </v-row>
   </div>
 </template>
 <script lang="ts">
