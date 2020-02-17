@@ -51,7 +51,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "Vue.js Definition",
-        routerPath: "/*"
+        routerPath: "/vue/def"
       }
     ]
   },
@@ -62,7 +62,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "-",
-        routerPath: "/*"
+        routerPath: "/react/def"
       }
     ]
   }

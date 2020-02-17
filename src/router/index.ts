@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: "/page1",
-    name: "page",
+    name: "data-post",
     component: () => import("@/views/page1/index.vue")
   },
   {
@@ -38,6 +38,11 @@ const routes = [
     path: "/404",
     name: "404",
     component: () => import("@/views/404.vue")
+  },
+  {
+    path: "*",
+    name: "404",
+    component: () => import("@/views/404.vue")
   }
   // {
   //   path: '/notice_board',
@@ -53,9 +58,6 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path === "/*") {
-    window.location.href = "/404";
-  }
   if (to.path === "/") {
     next();
   }

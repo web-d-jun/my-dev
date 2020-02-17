@@ -82,7 +82,6 @@
         <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini"></v-subheader>
       </v-list>
     </v-navigation-drawer>
-
     <v-app-bar app clipped-left elevate-on-scroll dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-icon class="mx-4">fab fa-youtube</v-icon>
@@ -92,7 +91,9 @@
           <small>(made with Vue.js)</small>
         </span>
       </v-toolbar-title>
-      <div class="navigation__text">{{routeInfo}}</div>
+      <transition name="slide-x-reverse-transition">
+        <div class="navigation__text">{{routeInfo}}</div>
+      </transition>
     </v-app-bar>
     <v-content>
       <v-container class="fill-height align-start">
