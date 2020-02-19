@@ -26,21 +26,26 @@ export default class JItem extends Vue {
 
   .j-item__container {
     width: 100%;
-    background: #424242;
+    height: 20px;
+    background: #fff;
     font-family: "Noto Sans KR", sans-serif !important;
     display: flex;
     align-items: center;
+    border: 1px solid #d8dce5;
     .inner__text {
       flex: 1;
       text-align: center;
-      padding: 0 8px;
+      padding: 0 4px;
+      
+    
     }
     .inner__icon {
       flex: none;
-      width: 30px;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
       text-align: center;
-      border-left: 1px groove black;
-      padding: 2px;
+
       &:hover {
         cursor: pointer;
       }
