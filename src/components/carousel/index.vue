@@ -16,29 +16,24 @@ export default class JCarousel extends Vue {}
 <style lang="scss" scoped>
 .carousel__container__wrap {
   overflow: hidden;
-  border-bottom: 1px solid black;
   .carousel__container {
-    width: 100%;    
+    width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    border-bottom: 1px solid #d8dce5;
+
     &::-webkit-scrollbar {
       width: 5px;
       height: 8px;
       background-color: transparent;
-      
     }
     &::-webkit-scrollbar-thumb {
-      background: #000;
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 8px;
     }
 
     &::-webkit-scrollbar-track {
       background-color: transparent;
-      
-    }
-    &::-webkit-scrollbar-track-piece {
-      background-color: transparent;
-      
     }
 
     .contents {
