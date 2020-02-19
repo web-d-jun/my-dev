@@ -42,7 +42,7 @@ export default class JItem extends Vue {
     .inner__icon {
       flex: none;
       width: 16px;
-      height: 16px;
+      height: 100%;
       line-height: 16px;
       text-align: center;
 
