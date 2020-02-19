@@ -94,23 +94,15 @@
       <transition name="slide-x-reverse-transition">
         <div class="toolbar__contents__wrap">
           <div class="navigation__text">{{routeInfo}}</div>
-          <div class="history__container">
-            <j-item :innerText="'122'" />
-            <j-item :innerText="'testestestestse'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestestestseaaaaaaaaaaa'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-            <j-item :innerText="'testestest'" />
-          </div>
         </div>
       </transition>
     </v-app-bar>
-    <v-content>
+    <div class="tag-views-container" :class="{'expend' : !drawer}">
+      <j-carousel>
+        <j-item :innerText="'testestestsetest' + i" v-for="i in 30" :key="i" />
+      </j-carousel>
+    </div>
+    <v-content class="pt-3">
       <v-container class="fill-height align-start">
         <div class="alert-state">
           <v-alert
@@ -130,16 +122,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit } from "vue-property-decorator";
+import { Component, Vue, Prop, Emit, Watch } from "vue-property-decorator";
 import Path from "@/router/path";
 import { State, namespace } from "vuex-class";
 import isLoader from "@/components/common/loader/index.vue";
 import JItem from "@/components/j-item/index.vue";
+import JCarousel from "@/components/carousel/index.vue";
 
 @Component({
   components: {
     isLoader,
-    JItem
+    JItem,
+    JCarousel
   }
 })
 export default class App extends Vue {
@@ -200,7 +194,7 @@ export default class App extends Vue {
 <style lang="scss" scoped>
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 $i: 1;
-$toolbar_height: 80px;
+$toolbar_height: 43px;
 #app {
   background-image: linear-gradient(to top, #acb7dc 70%, #dcb7dc 80%);
   position: relative;
@@ -256,7 +250,7 @@ $toolbar_height: 80px;
     width: 500px;
     height: 500px;
     left: 50%;
-    top: 10%;
+    top: 20%;
     transform: translate(-50%, 0%);
     .moon1-wrap {
       position: absolute;
@@ -338,11 +332,14 @@ $toolbar_height: 80px;
         font-family: "Noto Sans KR", sans-serif !important;
         color: #424242;
       }
-      .history__container {
-        display: flex;
-        max-width: 80vw;
-        overflow-x: auto;
-      }
+    }
+  }
+
+  .tag-views-container {
+    width: 100%;
+    padding: 48px 0px 0px 256px;
+    &.expend {
+      padding: 48px 0px 0px 0px !important;
     }
   }
 
@@ -381,6 +378,9 @@ $toolbar_height: 80px;
   }
   .mini {
     width: 300px !important;
+  }
+  .tag-views-container {
+    padding: 48px 0 0 0 !important;
   }
 }
 
