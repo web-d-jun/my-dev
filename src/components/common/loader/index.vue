@@ -50,11 +50,11 @@ export default class isLoader extends Vue {
 <style lang="scss" scoped>
 .is-loading-container {
   width: 100%;
-  height: 700px;
+  height: 500px;
   position: absolute;
   left: 0;
   top: 0;
-  background-image: linear-gradient(to top , #acb7dc 70%, #dcb7dc 80%);
+  // background-image: linear-gradient(to top , #acb7dc 70%, #dcb7dc 80%);
   display: flex;
   align-items: center;
   justify-content: center;
