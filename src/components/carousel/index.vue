@@ -22,15 +22,22 @@ export default class JCarousel extends Vue {}
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    
+    
 
     &:hover {
       &::-webkit-scrollbar {
+        &:active {
+          height: 30px;
+        }
         width: 5px;
         height: 8px;
         background-color: transparent;
         display: block !important;
       }
     }
+
+    
 
     &::-webkit-scrollbar {
       width: 5px;
@@ -41,10 +48,6 @@ export default class JCarousel extends Vue {}
     &::-webkit-scrollbar-thumb {
       background: rgba(255, 255, 255, 0.5);
       border-radius: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
     }
 
     .contents {
