@@ -25,6 +25,11 @@ const routes = [
     component: () => import("@/views/chat/index.vue")
   },
   {
+    path: '/nuxt/setting',
+    name: 'nuxt_setting',
+    component: () => import('@/views/nuxt/setting.vue')
+  },
+  {
     path: "/vue/notice_board",
     name: "notice_board",
     component: () => import("@/views/notice_board.vue")

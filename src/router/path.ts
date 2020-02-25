@@ -45,6 +45,17 @@ const Path: Array<Path> = [
     ]
   },
   {
+    icon: image.nuxt,
+    text: "Nuxt",
+    group: true,
+    deep_1: [
+      {
+        text: "Nuxt js & Typscript",
+        routerPath: "/nuxt/setting"
+      }
+    ]
+  },
+  {
     icon: image.vuejs,
     text: "Vue",
     group: true,
