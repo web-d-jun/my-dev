@@ -2,7 +2,9 @@
   <div class="carousel__container__wrap">
     <div class="carousel__container">
       <div class="contents">
-        <slot></slot>
+        <perfect-scrollbar>
+          <slot></slot>
+        </perfect-scrollbar>
       </div>
     </div>
   </div>
@@ -20,40 +22,9 @@ export default class JCarousel extends Vue {}
   border-bottom: 1px solid #d8dce5;
   .carousel__container {
     width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    
-    
-
-    &:hover {
-      &::-webkit-scrollbar {
-        &:active {
-          height: 30px;
-        }
-        width: 5px;
-        height: 8px;
-        background-color: transparent;
-        display: block !important;
-      }
-    }
-
-    
-
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 8px;
-      background-color: transparent;
-      display: none;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 8px;
-    }
-
     .contents {
       white-space: nowrap;
       width: 100%;
-      margin-bottom: -6px;
     }
   }
 }

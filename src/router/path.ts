@@ -5,6 +5,7 @@ interface Path {
   text: string;
   routerPath?: string;
   group?: boolean;
+  groupName?: string;
   deep_1?: object[];
 }
 
@@ -36,10 +37,12 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "GraphQL Definition",
+        groupName: "graphql",
         routerPath: "/*"
       },
       {
         text: "GraphQL - CRUD",
+        groupName: "graphql",
         routerPath: "/graphql/crud"
       }
     ]
@@ -51,6 +54,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "Nuxt js & Typscript",
+        groupName: "nuxt",
         routerPath: "/nuxt/setting"
       }
     ]
@@ -62,6 +66,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "Vue.js Definition",
+        groupName: "vue",
         routerPath: "/vue/def"
       }
     ]
@@ -73,6 +78,7 @@ const Path: Array<Path> = [
     deep_1: [
       {
         text: "-",
+        groupName: "react",
         routerPath: "/react/def"
       }
     ]

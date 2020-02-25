@@ -26,23 +26,28 @@
       :absolute="is_device === 'mobile'"
       :temporary="is_device === 'mobile'"
     >
-      <v-list navdense>
-        <v-list-item>
-          <v-list-item-avatar>
-            <v-img src="./assets/me.jpeg"></v-img>
-          </v-list-item-avatar>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Cho Jun Young</v-list-item-title>
-            <div class="profile__e-mail">- cjy874545@gmail.com</div>
-            <div class="profile__since-content">- since 2019</div>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider></v-divider>
-        <div v-for="path in urlPath" :key="path.text">
-          <template v-if="!path.group">
-            <v-list-item link @click="routerGo(path.routerPath)">
+      <perfect-scrollbar>
+        <v-list navdense>
+          <v-list-item>
+            <v-list-item-avatar>
+              <v-img src="./assets/me.jpeg"></v-img>
+            </v-list-item-avatar>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>Cho Jun Young</v-list-item-title>
+              <div class="profile__e-mail">- cjy874545@gmail.com</div>
+              <div class="profile__since-content">- since 2019</div>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+          <template v-for="path in urlPath">
+            <v-list-item
+              v-if="!path.group"
+              :key="path.text"
+              link
+              @click="routerGo(path.routerPath)"
+            >
               <v-list-item-action>
                 <v-icon>{{ path.icon }}</v-icon>
               </v-list-item-action>
@@ -50,9 +55,7 @@
                 <v-list-item-title>{{ path.text }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-          </template>
-          <template v-else-if="path.group">
-            <v-list-group no-action>
+            <v-list-group no-action v-else-if="path.group" :key="path.text" :group="path.groupName">
               <template #activator>
                 <v-list-item-action>
                   <v-list-item-avatar>
@@ -77,10 +80,9 @@
               </v-list-item>
             </v-list-group>
           </template>
-        </div>
-
-        <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini"></v-subheader>
-      </v-list>
+          <v-subheader class="mt-4 grey--text text--darken-1" v-show="!mini"></v-subheader>
+        </v-list>
+      </perfect-scrollbar>
     </v-navigation-drawer>
     <v-app-bar app clipped-left elevate-on-scroll dense>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -315,6 +317,12 @@ $toolbar_height: 43px;
   .v-navigation-drawer {
     top: $toolbar_height !important;
     background: transparent;
+    ::v-deep .v-navigation-drawer__content {
+      overflow: hidden !important;
+      .ps {
+        height: 100vh;
+      }
+    }
   }
   .v-toolbar {
     height: $toolbar_height !important;
