@@ -20,11 +20,11 @@ const Path: Array<Path> = [
     text: "Dashboard",
     routerPath: "/dashboard"
   },
-  {
-    icon: "mdi-book-open-page-variant",
-    text: "data post",
-    routerPath: "/page1"
-  },
+  // {
+  //   icon: "mdi-book-open-page-variant",
+  //   text: "data post",
+  //   routerPath: "/page1"
+  // },
   {
     icon: "mdi-chat-processing-outline",
     text: "chatting",
@@ -53,36 +53,36 @@ const Path: Array<Path> = [
     group: true,
     deep_1: [
       {
-        text: "Nuxt js & Typscript",
+        text: "Store 관리",
         groupName: "nuxt",
-        routerPath: "/nuxt/setting"
+        routerPath: "/nuxt/store"
       }
     ]
   },
-  {
-    icon: image.vuejs,
-    text: "Vue",
-    group: true,
-    deep_1: [
-      {
-        text: "Vue.js Definition",
-        groupName: "vue",
-        routerPath: "/vue/def"
-      }
-    ]
-  },
-  {
-    icon: image.react,
-    text: "React",
-    group: true,
-    deep_1: [
-      {
-        text: "-",
-        groupName: "react",
-        routerPath: "/react/def"
-      }
-    ]
-  }
+  // {
+  //   icon: image.vuejs,
+  //   text: "Vue",
+  //   group: true,
+  //   deep_1: [
+  //     {
+  //       text: "Vue.js Definition",
+  //       groupName: "vue",
+  //       routerPath: "/vue/def"
+  //     }
+  //   ]
+  // },
+  // {
+  //   icon: image.react,
+  //   text: "React",
+  //   group: true,
+  //   deep_1: [
+  //     {
+  //       text: "-",
+  //       groupName: "react",
+  //       routerPath: "/react/def"
+  //     }
+  //   ]
+  // }
 ];
 
 export default Path;
