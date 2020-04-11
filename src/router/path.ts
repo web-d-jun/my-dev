@@ -10,11 +10,11 @@ interface Path {
 }
 
 const Path: Array<Path> = [
-  {
-    icon: "mdi-home",
-    text: "Home",
-    routerPath: "/"
-  },
+  // {
+  //   icon: "mdi-home",
+  //   text: "Home",
+  //   routerPath: "/"
+  // },
   {
     icon: "mdi-desktop-mac-dashboard",
     text: "Dashboard",

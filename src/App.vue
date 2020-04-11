@@ -151,6 +151,7 @@ export default class App extends Vue {
   stateValue!: boolean;
 
   created() {
+    this.routerGo("/dashboard");
     // this.$vuetify.theme.dark = true;
     if (navigator.platform) {
       const filter = "win16|win32|win64|macintel";
