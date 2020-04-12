@@ -59,7 +59,7 @@
               <template #activator>
                 <v-list-item-action>
                   <v-list-item-avatar v-if="path.image">
-                      <div v-html="path.icon"></div>
+                      <v-icon>{{ path.icon }}</v-icon>
                   </v-list-item-avatar>
                   <v-list-item-avatar v-else-if="!path.image">
                       <v-img :src="path.icon"></v-img>

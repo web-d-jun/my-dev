@@ -36,7 +36,7 @@ const Path: Array<Path> = [
     routerPath: "/chat"
   },
   {
-    icon: "<i class='fa fa-css3'></i>",
+    icon: "mdi-language-css3",
     image: true,
     text: "CSS",
     group: true,
