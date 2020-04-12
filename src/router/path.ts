@@ -2,6 +2,7 @@ import * as image from "../assets/index";
 
 interface Path {
   icon: any;
+  image: boolean;
   text: string;
   routerPath?: string;
   group?: boolean;
@@ -12,26 +13,44 @@ interface Path {
 const Path: Array<Path> = [
   // {
   //   icon: "mdi-home",
+  // image: false,
   //   text: "Home",
   //   routerPath: "/"
   // },
   {
     icon: "mdi-desktop-mac-dashboard",
+    image: false,
     text: "Dashboard",
     routerPath: "/dashboard"
   },
   // {
   //   icon: "mdi-book-open-page-variant",
+  // image: false,
   //   text: "data post",
   //   routerPath: "/page1"
   // },
   {
     icon: "mdi-chat-processing-outline",
+    image: false,
     text: "chatting",
     routerPath: "/chat"
   },
   {
+    icon: "<i class='fa fa-css3'></i>",
+    image: true,
+    text: "CSS",
+    group: true,
+    deep_1: [
+      {
+        text: "grid",
+        groupName: "",
+        routerPath: "/css/grid"
+      }
+    ]
+  },
+  {
     icon: image.graphql,
+    image: false,
     text: "GraphQL",
     group: true,
     deep_1: [
@@ -49,6 +68,7 @@ const Path: Array<Path> = [
   },
   {
     icon: image.nuxt,
+    image: false,
     text: "Nuxt",
     group: true,
     deep_1: [
@@ -58,9 +78,10 @@ const Path: Array<Path> = [
         routerPath: "/nuxt/store"
       }
     ]
-  },
+  }
   // {
   //   icon: image.vuejs,
+  // image: false,
   //   text: "Vue",
   //   group: true,
   //   deep_1: [
@@ -73,6 +94,7 @@ const Path: Array<Path> = [
   // },
   // {
   //   icon: image.react,
+  // image: false,
   //   text: "React",
   //   group: true,
   //   deep_1: [

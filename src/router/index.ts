@@ -12,7 +12,7 @@ const routes = [
   {
     path: "/dashboard",
     name: "dashboard",
-    component: () => import("@/views/notice_board.vue")
+    component: () => import("@/views/dashboard/index.vue")
   },
   {
     path: "/page1",
@@ -25,9 +25,9 @@ const routes = [
     component: () => import("@/views/chat/index.vue")
   },
   {
-    path: '/nuxt/store',
-    name: 'nuxt_store',
-    component: () => import('@/views/nuxt/store.vue')
+    path: "/nuxt/store",
+    name: "nuxt_store",
+    component: () => import("@/views/nuxt/store.vue")
   },
   {
     path: "/vue/notice_board",
@@ -39,11 +39,11 @@ const routes = [
     name: "crud",
     component: () => import("@/views/graph_ql/crud.vue")
   },
-  {
-    path: "/404",
-    name: "404",
-    component: () => import("@/views/404.vue")
-  },
+  // {
+  //   path: "/404",
+  //   name: "404",
+  //   component: () => import("@/views/404.vue")
+  // },
   {
     path: "*",
     name: "404",

@@ -58,8 +58,11 @@
             <v-list-group no-action v-else-if="path.group" :key="path.text" :group="path.groupName">
               <template #activator>
                 <v-list-item-action>
-                  <v-list-item-avatar>
-                    <v-img :src="path.icon"></v-img>
+                  <v-list-item-avatar v-if="path.image">
+                      <div v-html="path.icon"></div>
+                  </v-list-item-avatar>
+                  <v-list-item-avatar v-else-if="!path.image">
+                      <v-img :src="path.icon"></v-img>
                   </v-list-item-avatar>
                 </v-list-item-action>
                 <v-list-item-content>
