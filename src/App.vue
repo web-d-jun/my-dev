@@ -7,11 +7,11 @@
       :style="{left: leftPosition(), top:topPosition()}"
     ></div>
     <div class="moon-wrap mini">
-      <div class="moon1-wrap">
+      <!-- <div class="moon1-wrap">
         <div class="moon1">
           <div class="outline"></div>
         </div>
-      </div>
+      </div> -->
       <div class="moon2-wrap">
         <div class="moon2">
           <div class="outline"></div>
@@ -103,9 +103,9 @@
       </transition>
     </v-app-bar>
     <div class="tag-views-container" :class="{'expend' : !drawer}">
-      <j-carousel>
+      <!-- <j-carousel>
         <j-item :innerText="'testestestsetest' + i" v-for="i in 30" :key="i" />
-      </j-carousel>
+      </j-carousel> -->
     </div>
     <v-content class="pt-3">
       <v-container class="fill-height align-start">

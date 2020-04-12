@@ -35,6 +35,11 @@ const routes = [
     component: () => import("@/views/notice_board.vue")
   },
   {
+    path: "/css/grid",
+    name: "css",
+    component: () => import("@/views/_css/grid.vue")
+  },
+  {
     path: "/graphql/crud",
     name: "crud",
     component: () => import("@/views/graph_ql/crud.vue")
