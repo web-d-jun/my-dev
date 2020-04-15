@@ -10,7 +10,9 @@
       <div class="item item7">7</div>
       <div class="item item8">8</div>
       <div class="item item9">9</div>
-      <div class="item item10">10</div>
+      <div class="item item10">+/-</div>
+      <div class="item item10">0</div>
+      <div class="item item10">.</div>
     </div>
   </div>
 </template>
@@ -21,11 +23,18 @@ export default class Grid extends Vue {}
 </script>
 <style lang="scss" scoped>
 .grid-container {
-    width: 100%;
-    height: 100%;
-    border: 1px solid blue;
-    .container {
-
+  width: 100%;
+  height: 100%;
+  border: 1px solid blue;
+  .container {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto auto;
+    .item {
+      text-align: center;
+      font-size: 30px;
+      border: 1px solid rgba($color: #000000, $alpha: 0.6);
     }
+  }
 }
 </style>
